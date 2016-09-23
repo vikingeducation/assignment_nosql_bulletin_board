@@ -1,1 +1,1 @@
-BulletinBoard = angular.module('BulletinBoard', []);
+BulletinBoard = angular.module('BulletinBoard', ['underscore']);
