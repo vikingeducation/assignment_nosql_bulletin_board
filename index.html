@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ToDo" ng-controller="ToDoCtrl">
+<html ng-app="BulletinBoard" ng-controller="PostsController">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,14 @@
     <title>Assignment NoSQL Bulletin Board</title>
 
     <!-- first include the underscore.js library -->
-    <script src="
-https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -24,10 +24,58 @@ https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></
   </head>
   <body>
 
+    <main class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="page-header" style="text-align:center;">
+            <h1>NoSQL Bulletin Board</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-5">
+          <div id="left-side">
+            <div class="sub-header">
+              <h3>Recent Comments</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-7">
+          <div id="right-side">
+            <div class="sub-header">
+              <h3>Posts</h3>
+            </div>
+            <div class="post">
+              <div class="post-title">
+                <h4>{{ posts["1"]["title"] }}</h4>
+              </div>
+              <div class="post-date">
+                <p>Posted on {{ posts["1"]["date"] }}</p>
+              </div>
+              <div class="post-body">
+                <p>{{ posts["1"]["body"] }}</p>
+              </div>
+              <div class="create-a-comment">
+                FORM FOR CREATE A COMMENT
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <!-- Date Formatting -->
-    <script src="/js/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.15.0/moment.min.js"></script>
 
     <!-- App -->
     <script src="/js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="/js/controllers/posts_controller.js"></script>
+
+    <!-- Services -->
+    <script src="/js/services/posts_service.js"></script>
+
   </body>
 </html>
