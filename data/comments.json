@@ -1,0 +1,25 @@
+comments = {
+	"1": {
+		"id": 1,
+		"author": "Cat Woman",
+		"body": "meoowwww",
+		"likes": 34,
+		"date": "December 31st, 2016"
+	},
+
+	"2": {
+		"id": 2,
+		"author": "Bat Man",
+		"body": "Too many obligations",
+		"likes": 2,
+		"date": "December 31st, 2016"
+	},
+
+	"3": {
+		"id": 3,
+		"author": "The Joker",
+		"body": "No Merit",
+		"likes": 66,
+		"date": "January 22nd, 2015"
+	}
+}
