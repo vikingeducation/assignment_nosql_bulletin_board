@@ -39,6 +39,11 @@
             <div class="sub-header">
               <h3>Recent Comments</h3>
             </div>
+            <div class="comments">
+              <div class="comment">
+                {{ comments }}
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-xs-7">
@@ -75,6 +80,7 @@
     <script src="/js/controllers/posts_controller.js"></script>
 
     <!-- Services -->
+    <script src="/js/services/comments_service.js"></script>
     <script src="/js/services/posts_service.js"></script>
 
   </body>
