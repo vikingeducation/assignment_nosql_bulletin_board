@@ -13,7 +13,6 @@ BulletinBoard.controller("PostsController", ['$scope', '_', 'PostsService', 'Com
 				p = [];
 				_.each( commentsIds, function(id){ 
 					p.push( $scope.comments[id] );
-					console.log($scope.comments[id])
 				});
 				return p;
 			};
