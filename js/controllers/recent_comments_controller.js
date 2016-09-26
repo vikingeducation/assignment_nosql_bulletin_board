@@ -11,4 +11,8 @@ BulletinBoard.controller("RecentCommentsController", ['$scope', '$http', '_', 'C
 				return p;
 			};
 		});
+
+	$scope.formatDate = function(date){
+		return moment(date).format('MMMM Do YYYY');
+	};
 }]);
