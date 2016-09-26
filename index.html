@@ -40,10 +40,10 @@
               <h3>Recent Comments</h3>
             </div>
             <div class="comments">
-              <div class="comment" ng-repeat="comment in comments | orderBy: 'id' : true">
+              <div class="comment" ng-repeat="comment in commentsInArray() | orderBy : '-date'">
                 {{ comment.likes }}
                 {{ comment.author }}
-                Commented on {{ comment.date }}
+                Commented on <h5>{{ comment.date }}</h5>
                 {{ comment.body }}
               </div>
             </div>
