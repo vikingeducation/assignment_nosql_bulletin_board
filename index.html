@@ -15,7 +15,7 @@
   <div class="col-sm-5">
       <h3>Recent Comments</h3>
       <div ng-repeat="comment in comments | objToArray | orderBy: 'date'">
-        <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent, params)"
+        <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent, params)" show-state="commentShowStates"
         nested-params="commentCommentParams"></comment-box>
       </div>
   </div>
@@ -51,10 +51,11 @@
     </div>-->
 
     <div ng-repeat="comment in comments | produceComments: currentPost.comments | orderBy: '-voteCount'" >
-      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent, params)" nested-params="commentCommentParams"></comment-box>
+      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent, params)" show-state="commentShowStates" nested-params="commentCommentParams"></comment-box>
       <div class="col-sm-11 col-sm-offset-1" ng-repeat="childComment in comments | produceComments: comment.childComments | orderBy: '-voteCount'">
           <comment-box comment="childComment" upvote="upvote(comment)" downvote="downvote(comment)"
           create="createNestedComment(parent, params)"
+          show-state="commentShowStates"
           nested-params="commentCommentParams"></comment-box>
       </div>
     </div>

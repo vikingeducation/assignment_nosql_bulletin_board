@@ -5,8 +5,9 @@
   <p>Commented on {{comment.date | date}}</p>
   <p>{{comment.text}}</p>
   <p data-type="new-comment">
-    <a class='text-muted comment-btn' data-id="comment.id">Add Comment</a>
-    <form data-id="comment.id">
+    <a class='text-muted comment-btn' data-id="comment.id" ng-click="changeShow()" ng-hide="showForm">Add Comment</a>
+     <a class='text-muted comment-btn' data-id="comment.id" ng-click="changeShow()" ng-show="showForm">Cancel</a>
+    <form data-id="comment.id" ng-show="showForm">
       <div>
         <label>Author
           <input type="text" ng-model="params.author"/>

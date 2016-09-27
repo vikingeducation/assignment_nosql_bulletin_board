@@ -3,6 +3,7 @@
 app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function($scope, _, PostsSer, CommentsSer){
   $scope.commentParams = {};
   $scope.commentCommentParams = {};
+  $scope.commentShowStates = {};
 
   PostsSer.all()
    .then(function(posts){
