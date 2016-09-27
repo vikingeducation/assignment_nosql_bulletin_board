@@ -13,8 +13,15 @@ app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", functi
   });
 
   $scope.createComment = function() {
-    console.log($scope.this_post);
     commentsService.createComment($scope.postComment);
+  }
+
+  $scope.upVote = function(comment) {
+    commentsService.upVote(comment.id);
+  }
+
+  $scope.downVote = function(comment) {
+    commentsService.downVote(comment.id);
   }
 
 }])

@@ -2,10 +2,10 @@ e<html ng-app="BulletinBoard">
   <head>
     <title>NoSQL!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <!--bs4-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
-
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <!--Lo-Dash -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.js"></script>
     <!-- Angular -->
@@ -19,7 +19,6 @@ e<html ng-app="BulletinBoard">
     <!-- Services -->
     <script src="services/posts_service.js"></script>
     <script src="services/comments_service.js"></script>
-
     <!--Filters -->
     <script src="filters/comment_obj_to_array.js"></script>
     <script src="filters/filter_by_ids.js"></script>
@@ -29,6 +28,7 @@ e<html ng-app="BulletinBoard">
   </head>
 
   <body ng-controller= "PostsCtrl">
+
     <div class="container-fluid">
       <div class="col-xs-6 card bg-inverse" 
       ng-repeat="(postId, post) in posts">
@@ -39,7 +39,6 @@ e<html ng-app="BulletinBoard">
         <p>Body:{{post.body}}</p>
         <p>Author:{{post.author}}</p>
         <p>Comment IDs:{{post.comment_ids}}</p>
-
 
         <div class="card bg">
           <form ng-submit="createComment()">
@@ -62,6 +61,8 @@ e<html ng-app="BulletinBoard">
       <div class="row">
         <h3> Recent Comments <i class="fa fa-arrow-up fa-6x" aria-hidden="true"></i></h3>
         <div class="col-xs-12 card card-outline-success" ng-repeat="comment in comments | objToArrayFilter | orderBy: '-created_at' | limitTo: 3">
+          <i class="fa fa-arrow-circle-up bigger" ng-click="upVote(comment)"></i>
+          <i class="fa fa-arrow-circle-down bigger" ng-click="downVote(comment)"></i>
           <p>Votes: {{comment.votes}}</p>
           <p>Author: {{comment.author}}</p>
           <p>Body: {{comment.body }}</p>

@@ -1,4 +1,8 @@
+<i class="fa fa-arrow-circle-up bigger" ng-click="upVote(comment)"></i>
+<i class="fa fa-arrow-circle-down bigger" ng-click="downVote(comment)"></i>
 <p>Votes: {{comment.votes}}</p>
 <p>Author: {{comment.author}}</p>
 <p>Body: {{comment.body }}</p>
 <p>Comment: {{comment.created_at}}</p>
+<div class="col-xs-6 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:comment.comment_ids | orderBy: '-votes'" comment="comment"></div>
+</div>
