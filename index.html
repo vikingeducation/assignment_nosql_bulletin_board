@@ -1,0 +1,71 @@
+<html ng-app="BulletinBoard">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.2/lodash.js"></script>
+</head>
+<body ng-controller="PostsCtrl">
+<div class="container">
+  <div class="row">
+
+  <h1 class="text-center">NoSQL Bulletin Board</h1>
+  <div class="col-sm-5">
+      <h3>Recent Comments</h3>
+      <div ng-repeat="comment in comments | objToArray | orderBy: 'date'">
+        <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent, params)" show-state="commentShowStates"
+        nested-params="commentCommentParams"></comment-box>
+      </div>
+  </div>
+  <div class="col-sm-7">
+    <h3>Posts</h3>
+    <h2>{{currentPost.title}}</h2>
+    <p>
+      Posts on {{currentPost.date | date }} by {{currentPost.author}}
+    </p>
+    <p>
+      {{currentPost.text}}
+    </p>
+
+    <form>
+      <div>
+        <label>Author
+          <input type="text" ng-model="commentParams.author"/>
+        </label>
+      </div>
+      <div>
+        <label>Comment
+          <textarea ng-model="commentParams.text"></textarea>
+        </label>
+      </div>
+      <input type='submit' ng-click="createComment()"/>
+    </form>
+
+    <!--<div ng-repeat="j in currentPost.comments | produceComments">
+      <comment-box comment="comments[j]" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
+      <div class="col-sm-11 col-sm-offset-1" ng-repeat="i in comments[j].childComments" ng-if='comment[j].childComments.length'>
+          <comment-box comment="comments[i]" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
+      </div>
+    </div>-->
+
+    <div ng-repeat="comment in comments | produceComments: currentPost.comments | orderBy: '-voteCount'" >
+      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent, params)" show-state="commentShowStates" nested-params="commentCommentParams"></comment-box>
+      <div class="col-sm-11 col-sm-offset-1" ng-repeat="childComment in comments | produceComments: comment.childComments | orderBy: '-voteCount'">
+          <comment-box comment="childComment" upvote="upvote(comment)" downvote="downvote(comment)"
+          create="createNestedComment(parent, params)"
+          show-state="commentShowStates"
+          nested-params="commentCommentParams"></comment-box>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+  <script src="js/app.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/posts_controller.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>

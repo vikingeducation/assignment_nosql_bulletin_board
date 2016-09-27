@@ -1,0 +1,25 @@
+<div class="col-sm-12">
+ <h2><span class="glyphicon glyphicon-chevron-up" ng-click="upvote({comment: comment})"> </span>
+  <span class="glyphicon glyphicon-chevron-down" ng-click="downvote({comment: comment})"> </span>
+  {{comment.voteCount}} | {{comment.author}}</h2>
+  <p>Commented on {{comment.date | date}}</p>
+  <p>{{comment.text}}</p>
+  <p data-type="new-comment">
+    <a class='text-muted comment-btn' data-id="comment.id" ng-click="changeShow()" ng-hide="showForm">Add Comment</a>
+     <a class='text-muted comment-btn' data-id="comment.id" ng-click="changeShow()" ng-show="showForm">Cancel</a>
+    <form data-id="comment.id" ng-show="showForm">
+      <div>
+        <label>Author
+          <input type="text" ng-model="params.author"/>
+        </label>
+      </div>
+      <div>
+        <label>Comment
+          <textarea ng-model="params.text"></textarea>
+        </label>
+      </div>
+      <input type='submit' ng-click="create({parent: comment, params: params})"/>
+    </form>
+  </p>
+
+</div>
