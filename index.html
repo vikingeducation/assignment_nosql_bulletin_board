@@ -12,17 +12,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
 </head>
 
-<body ng-controller="PostCtrl" class="container">
+<body class="container">
 
   <h1>NoSQL Bulletin Board</h1>
 
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-controller="RecentCommentsCtrl">
       <h2>Recent Comments</h2>
-
+      <ul>
+        <li ng-repeat="comment in comments | orderComments:'date' | limitTo: 3" comment-div comment='comment'>
+        </li>
+      </ul>
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-8"  ng-controller="PostCtrl">
       <h2>Posts</h2>
       <post-div post="post" comment-params="commentParams" create-comment="createComment()" comments="comments"></post-div>
 
@@ -36,6 +39,7 @@
 <script type="text/javascript" src="/directives/post.js"></script>
 <script type="text/javascript" src="/directives/comment.js"></script>
 <script type="text/javascript" src="/controllers/post_ctrl.js"></script>
+<script type="text/javascript" src="/controllers/recent_comments_ctrl.js"></script>
 <script type="text/javascript" src="/filters/score_filter.js"></script>
 
 </html>
