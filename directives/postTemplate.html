@@ -1,12 +1,12 @@
 <h3>{{post.title}}</h3>
 <h4>Posted on {{post.date | date}} by {{post.author}}</h4>
 <p>{{post.body}}</p>
-<form name="newComment" ng-submit="createComment()">
+<form name="newComment" ng-submit="post.addComment(commentParams)">
   <label for="author">Author: </label>
   <input type="text" name="author" ng-model="commentParams.author"><br>
   <label for="comment">Comment: </label>
   <input type="text" name="comment" ng-model="commentParams.body"><br>
   <input type="submit" value="Submit">
 </form>
-<div comment-div ng-repeat="commentID in post.comments | scoreFilter:comments" comment="comments[commentID]"></div>
+<div comment-div ng-repeat="commentID in post.comments | scoreFilter:comments" comment="comments[commentID]" comments="comments"></div>
 <!-- <div comment-directive ng-repeat="commentIDs in post.comments" > -->

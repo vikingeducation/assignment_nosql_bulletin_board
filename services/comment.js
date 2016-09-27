@@ -1,4 +1,4 @@
-bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, PostService){
+bb.factory("CommentService",  ['$http', '_', function($http,_){
 
   obj = {};
 
@@ -34,15 +34,15 @@ bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, Po
     return _id + 1;
   };
 
-  obj.create = function(commentObj, postId) {
+  obj.create = function(commentObj) {
     commentObj.date = new Date().toISOString().slice(0, 10);
     commentObj.upvotes = [];
     commentObj.downvotes = [];
     commentObj.id = obj.nextId();
     _comments[obj.nextId()] = commentObj;
-    _id++;
     _extendComment(commentObj);
-    PostService.addComment(postId, commentObj.id);
+    return _id++;
+    // PostService.addComment(postId, commentObj.id);
     // return new Promise(function(resolve) { resolve(commentObj)});
   };
 
@@ -53,9 +53,15 @@ bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, Po
     comment.downvote = function() {
       comment.downvotes.push(1);
     };
-    comment.destroy = function() {
-      delete _comments[comment.id];
-    };
+    // comment.destroy = function() {
+    //   delete _comments[comment.id];
+    //   //remove from posts
+    // };
+    comment.addComment = function(commentObj) {
+      var newCommentId = obj.create(commentObj)
+      comment.comments.push(newCommentId)
+      commentObj = {}
+    }
   };
 
   var _extendComments = function(comments) {
