@@ -8,9 +8,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.2/lodash.js"></script>
 </head>
-<body>
+<body ng-controller="PostsCtrl">
 
-  {{posts[0].title}}
 
+
+  <h1>NoSQL Bulletin Board</h1>
+  <div class="col-sm-5">
+      <h3>Recent Comments</h3>
+  </div>
+  <div class="col-sm-7">
+    <h3>Posts</h3>
+    <h2>{{posts["1"].title}}</h2>
+    <p>
+      Posts on {{posts["1"].date | date }} by {{posts["1"].author}}
+    </p>
+    <p>
+      {{posts["1"].text}}
+    </p>
+
+    <form>
+      <div>
+        <label>Author
+          <input type="text" ng-model="commentParams.author"/>
+        </label>
+      </div>
+      <div>
+        <label>Comment
+          <textarea ng-model="commentParams.text"></textarea>
+        </label>
+      </div>
+      <input type='submit' ng-click=""/>
+    </form>
+  </input>
+
+  <script src="js/app.js"></script>
+  <script src="js/posts_controller.js"></script>
 </body>
 </html>

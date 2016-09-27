@@ -1,9 +1,10 @@
 app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', function($scope, _, PostsSer){
+  $scope.commentParams = {};
 
-    PostsSer.all()
-     .then(function(posts){
-       $scope.posts = posts;
-     });
+  PostsSer.all()
+   .then(function(posts){
+     $scope.posts = posts;
+   });
 }]);
 
 
@@ -14,7 +15,7 @@ app.factory('PostsSer', ['$http', '_', function($http, _){
 
   PostsSer.all = function(){
     return $http({
-      url: '/data/posts.json',
+      url: '/js/data/posts.json',
       method: 'GET'
     })
       .then(function(response){
