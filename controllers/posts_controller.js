@@ -14,6 +14,6 @@ BulletinBoard.controller('PostsCtrl', ['$scope', 'PostsService', 'CommentsServic
 
   $scope.addComment = function(post_id) {
     CommentsService.add($scope.commentParams, post_id);
-  }
+  };
 
 }]);

@@ -4,15 +4,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet" type="text/css">
   </head>
   <body class="row">
     <div ng-controller="RecentCommentsCtrl" class="col-xs-4">
       <h3>Recent Comments</h3>
-      <div ng-repeat="comment in comments">
-        <h3>{{comment.score}} | {{comment.user}}</h3>
-        <p>Commented on {{comment.date | date:"MM/dd/yyyy"}}</p>
-        <p>{{comment.text}}</p>
-      </div>
+      <comment ng-repeat="comment in comments" comment="comment"></comment>
     </div>
 
     <div ng-controller="PostsCtrl" class="col-xs-8">
@@ -33,11 +30,7 @@
           </form>
         </div>
 
-        <div ng-repeat="comment in allcomments | commentsFilter:post | orderBy: '-score'">
-          <h3>{{comment.score}} | {{comment.user}}</h3>
-          <p>Commented on {{comment.date | date:"MM/dd/yyyy"}}</p>
-          <p>{{comment.text}}</p>
-        </div>
+        <comment ng-repeat="comment in allcomments | commentsFilter:post | orderBy: '-score'" comment="comment"></comment>
       </div>
     </div>
   </body>
@@ -47,4 +40,5 @@
   <script src="filters/comments_filter.js"></script>
   <script src="controllers/posts_controller.js"></script>
   <script src="controllers/recent_comments_controller.js"></script>
+  <script src="directives/comment_directive.js"></script>
 </html>

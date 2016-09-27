@@ -1,0 +1,5 @@
+<h3>
+  <span class="vote" ng-click="comment.upvote()">↑</span><span class="vote" ng-click="comment.downvote()">↓</span>   {{comment.score}} | {{comment.user}}
+</h3>
+<p>Commented on {{comment.date | date:"MM/dd/yyyy"}}</p>
+<p>{{comment.text}}</p>
