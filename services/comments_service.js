@@ -11,6 +11,11 @@ app.factory('commentsService', ['$http', function($http) {
     })
   };
 
+  stub.createComment = function(params) {
+    var _comment = params;
+    console.log(postComment.author);
+  }
+
   return stub
 
 }]);
