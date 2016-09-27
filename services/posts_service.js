@@ -9,6 +9,7 @@ app.factory('postsService', ['$http', function($http) {
       .then(function(response) {
         _posts = response.data;
         return _posts;
+        //return angular.copy(response.data, _posts)
       });
   };
 
