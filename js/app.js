@@ -20,3 +20,10 @@ app.filter('produceComments', ['_', function(){
 		});
 	};
 }])
+
+// angular.element(document).ready(function(){
+//   ('body').on('click', '.comment-btn', function(e){
+//     console.log($(e.target).sibling('form'));
+//
+//   })
+// });

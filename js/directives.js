@@ -8,7 +8,19 @@ app.directive("commentBox", function(){
 			downvote: "&",
 			upvote: "&",
 			create: "&",
-			params: "="
+			nestedParams: "="
+		},
+		link: function(scope, el, attributes){
+			scope.nestedParams[scope.comment.id] = {};
+			scope.params = scope.nestedParams[scope.comment.id];
+
+			var commentCreate = scope.create;
+			scope.create = function(obj){
+				commentCreate(obj);
+				scope.params = {};
+			}
+
+			angular.element(el)
 		}
 	};
 });

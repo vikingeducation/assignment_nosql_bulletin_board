@@ -5,8 +5,8 @@
   <p>Commented on {{comment.date | date}}</p>
   <p>{{comment.text}}</p>
   <p data-type="new-comment">
-    <a class='text-muted'>Add Comment</a>
-    <form>
+    <a class='text-muted comment-btn' data-id="comment.id">Add Comment</a>
+    <form data-id="comment.id">
       <div>
         <label>Author
           <input type="text" ng-model="params.author"/>
@@ -17,8 +17,8 @@
           <textarea ng-model="params.text"></textarea>
         </label>
       </div>
-      <input type='submit' ng-click="create({parent: comment})"/>
+      <input type='submit' ng-click="create({parent: comment, params: params})"/>
     </form>
-  </>
+  </p>
 
 </div>

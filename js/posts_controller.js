@@ -3,6 +3,7 @@
 app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function($scope, _, PostsSer, CommentsSer){
   $scope.commentParams = {};
   $scope.commentCommentParams = {};
+
   PostsSer.all()
    .then(function(posts){
      $scope.posts = posts;
@@ -27,10 +28,8 @@ app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function(
       $scope.commentParams = {};
    };
 
-   $scope.createNestedComment = function(parent){
-    console.log($scope.commentCommentParams);
-     CommentsSer.create($scope.commentCommentParams, parent);
-     $scope.commentCommentParams = {};
+   $scope.createNestedComment = function(parent, params){
+     CommentsSer.create(params, parent);
    };
 
    $scope.upvote = function(comment){
