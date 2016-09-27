@@ -27,6 +27,11 @@ app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function(
       $scope.commentParams = {};
    };
 
+   $scope.createNestedComment = function(){
+     CommentsSer.create($scope.commentCommentparams, resource);
+     $scope.commentCommentParams;
+   }
+
    $scope.upvote = function(comment){
       CommentsSer.upvote(comment);
    };

@@ -13,9 +13,9 @@ app.filter('objToArray', ['_', function(){
 }]);
 
 app.filter('produceComments', ['_', function(){
-	return function(ids){
+  return function(collection, ids){
 		return _.map(ids, function(id){
-			return 
-		})
-	}
+			return collection[id];
+		});
+	};
 }])

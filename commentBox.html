@@ -4,5 +4,21 @@
   {{comment.voteCount}} | {{comment.author}}</h2>
   <p>Commented on {{comment.date | date}}</p>
   <p>{{comment.text}}</p>
+  <p data-type="new-comment">
+    <a class='text-muted' ng-click="flipCom(comment)">Add Comment</a>
+    <form>
+      <div>
+        <label>Author
+          <input type="text" ng-model="commentCommentParams.author"/>
+        </label>
+      </div>
+      <div>
+        <label>Comment
+          <textarea ng-model="commentCommentParams.text"></textarea>
+        </label>
+      </div>
+      <input type='submit' ng-click="createNestedComment()"/>
+    </form>
+  </>
 
 </div>
