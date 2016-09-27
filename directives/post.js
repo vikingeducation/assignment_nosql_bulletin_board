@@ -6,11 +6,12 @@ bb.directive('postDiv', [function(){
     scope: {
       post: "=",
       commentParams: "=",
-      createComment: "&"
+      createComment: "&",
+      comments: "="
     }
 
 
-  }
+  };
 
 
-}])
+}]);

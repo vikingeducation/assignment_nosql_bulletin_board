@@ -8,4 +8,5 @@
   <input type="text" name="comment" ng-model="commentParams.body"><br>
   <input type="submit" value="Submit">
 </form>
-<!-- <div comment-directive ng-repeat="commentIDs in post.comments"> -->
+<comment-div ng-repeat="commentID in post.comments" comment="comments[commentID]"></comment-div>
+<!-- <div comment-directive ng-repeat="commentIDs in post.comments" > -->
