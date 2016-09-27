@@ -9,7 +9,7 @@
   <body class="row">
     <div ng-controller="RecentCommentsCtrl" class="col-xs-4">
       <h3>Recent Comments</h3>
-      <comment ng-repeat="comment in comments" comment="comment"></comment>
+      <comment ng-repeat="comment in comments | orderObjectBy:'date':true | limitTo: 10" comment="comment"></comment>
     </div>
 
     <div ng-controller="PostsCtrl" class="col-xs-8">
@@ -41,4 +41,5 @@
   <script src="controllers/posts_controller.js"></script>
   <script src="controllers/recent_comments_controller.js"></script>
   <script src="directives/comment_directive.js"></script>
+  <script src="filters/date_sort_filter.js"></script>
 </html>

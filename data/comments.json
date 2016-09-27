@@ -3,21 +3,21 @@
     "post_id": 1,
     "text": "this is a comment",
     "user": "Robin",
-    "date": "01/01/2016",
+    "date": "1451624400000",
     "score": 3
   },
   "2":{
     "post_id": 1,
     "text": "Your post is purrfect",
     "user": "Cat Woman",
-    "date": "12/01/2015",
+    "date": "1448946000000",
     "score": 4
   },
   "3":{
     "post_id": 1,
     "text": "I got away",
     "user": "Joker",
-    "date": "12/01/2015",
+    "date": "1448946000000",
     "score": -1
   }
 }
