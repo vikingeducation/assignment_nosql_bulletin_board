@@ -1,10 +1,4 @@
-bb.controller('PostCtrl', ['$scope', '_', 'CommentService', 'PostService', function($scope, _, CommentService, PostService){
-
-
-  $scope.userParams = {
-
-
-  }
+bb.controller('PostCtrl', ['$scope', 'CommentService', 'PostService', function($scope, CommentService, PostService){
 
 
   CommentService.list()
@@ -13,14 +7,16 @@ bb.controller('PostCtrl', ['$scope', '_', 'CommentService', 'PostService', funct
     });
 
 
+
+
   PostService.list()
     .then(function(posts){
-      $scope.posts = posts;
+      $scope.post = posts["1"];
     });
 
-    $scope.createComment = function() {
-      CommentService.create($scope.userParams, $scope.commentParams)
-    }
+  $scope.createComment = function() {
+    CommentService.create($scope.commentParams)
+  }
 
 
 }]);

@@ -1,10 +1,8 @@
-bb.factory("CommentService", [function(){
+bb.factory("CommentService",  ['$http', function($http){
 
   obj = {};
 
   var _comments;
-
-  obj.createComment = function() {}
 
   obj.list = function() {
     return $http({
@@ -15,7 +13,11 @@ bb.factory("CommentService", [function(){
       _comments = response.data;
       return _comments;
     })
-  }
+  };
+
+  obj.create = function(params) {
+
+  };
 
   return obj;
 

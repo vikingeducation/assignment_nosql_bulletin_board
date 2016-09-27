@@ -1,12 +1,9 @@
-bb.factory("PostService", ['CommentService', function(CommentService){
+bb.factory("PostService", ['CommentService', '$http', function(CommentService, $http){
 
   obj = {};
 
   var _posts;
 
-  obj.getComments = function(post) {
-    
-  }
 
   obj.list = function() {
     return $http({
@@ -14,6 +11,7 @@ bb.factory("PostService", ['CommentService', function(CommentService){
       method: 'GET'
     })
     .then(function(response){
+      console.log("reaching the then of posts")
       _posts = response.data;
       return _posts;
     })

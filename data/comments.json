@@ -2,7 +2,7 @@
   "1": {
     "id": 1,
     "body": "comment1",
-    "user_id": 1,
+    "author": "Cat Woman",
     "date": "2016-01-01",
     "upvotes": [1],
     "downvotes": []
@@ -10,7 +10,7 @@
   "2": {
     "id": 2,
     "body": "comment2",
-    "user_id": 1,
+    "author": "Robin",
     "date": "2016-01-02"
   }
 }
