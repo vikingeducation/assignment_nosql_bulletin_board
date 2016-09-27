@@ -8,7 +8,7 @@ BulletinBoard.controller('PostsCtrl', ['$scope', 'PostsService', 'CommentsServic
   });
 
   CommentsService.all().then(function(comments){
-    $scope.comments = comments;
+    $scope.allcomments = comments;
   });
 
 }]);
