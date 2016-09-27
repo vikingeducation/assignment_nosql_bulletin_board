@@ -5,6 +5,6 @@
     "title": "My Bat Mobile Lost a Wheel :(",
     "body": "Lorem ipsum dolor sit amet",
     "author":  "Batman",
-    "comments": [1,2,3]
+    "comment_ids": [1,2,3]
   }
 }
