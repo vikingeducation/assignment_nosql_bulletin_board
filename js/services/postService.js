@@ -7,21 +7,21 @@ angular.module('bulletinBoard').factory("postService", ["$http", function($http)
       method: 'GET',
       url: '/data/posts.json'
     }).then(function(response) {
-      angular.copy(response.data, _posts)
+      angular.copy(response.data, _posts);
       return response.data;
     });
   };
 
   var getPosts = function() {
     if (_posts.length) {
-      return _posts
+      return _posts;
     } else {
-      return _populatePosts()
+      return _populatePosts();
     }
-  }
+  };
 
   return {
-    getPosts: getPosts;
-  }
+    getPosts: getPosts
+  };
 
 }]);
