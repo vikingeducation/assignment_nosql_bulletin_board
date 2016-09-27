@@ -48,6 +48,8 @@ BulletinBoard.factory('CommentsService',
           // Well how about I change it up so that it doesn't even make the http call unless there's no data already.
           _comments = _comments || response.data;
 
+          _extendComments( _comments );
+
           return _comments;
         });
     };

@@ -17,4 +17,12 @@ BulletinBoard.controller("RecentCommentsController", ['$scope', '_', 'CommentsSe
 		return moment(date).format('MMMM Do YYYY');
 	};
 
+	$scope.increaseLikes = function(commentId){
+		$scope.comments[commentId].increaseLikes();
+	};
+
+	$scope.decreaseLikes = function(commentId){
+		$scope.comments[commentId].decreaseLikes();
+	};
+
 }]);

@@ -41,15 +41,13 @@
             </div>
             <div class="comments">
               <div class="comment" ng-repeat="comment in commentsInArray() | orderBy : '-date'">
-                {{ comment.likes }}
-                {{ comment.author }}
-                Commented on <h5>{{ formatDate(comment.date) }}</h5>
-                {{ comment.body }}
+                {{ comment.author }}<br>
+                Commented on <b>{{ formatDate(comment.date) }}</b><br>
+                {{ comment.body }}<br>
+                <b>{{ comment.likes }}</b>
+                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="increaseLikes(comment.id)"></span>
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="decreaseLikes(comment.id)"></span>
               </div>
-            </div>
-
-            <div class="test">
-              {{ comments }}
             </div>
           </div>
         </div>
@@ -90,10 +88,6 @@
                   <h5>Commented on {{ formatDate(comment.date) }}</h5>
                   {{ comment.body }}
                 </div>
-              </div>
-
-              <div class="test">
-                {{ comments }}
               </div>
             </div>
           </div>
