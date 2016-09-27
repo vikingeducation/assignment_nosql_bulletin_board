@@ -1,8 +1,7 @@
 bb.directive('commentDiv', [function(){
 
   return {
-    template: '<div ng-if="comment.comments.length > 0"><div comment-div ng-repeat="commentID in comment.comments" comment="comments[commentID]" comments="comments"></div></div>',
-
+    templateUrl: "/directives/commentTemplate.html",
     restrict: "AE",
     scope: {
       comment: "=",
