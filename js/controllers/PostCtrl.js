@@ -1,8 +1,15 @@
-angular.module('bulletinBoard').controller("PostCtrl", ["$scope", "postService", function($scope, postService) {
+angular.module('bulletinBoard')
+.controller("PostCtrl",
+["$scope", "postService", "commentService",
+function($scope, postService, commentService) {
 
   postService.getPosts().then(function(data) {
     $scope.posts = data;
-    console.log($scope.posts);
+  });
+
+  commentService.getComments().then(function(data) {
+    $scope.comments = data;
+    console.log($scope.comments);
   });
 
 }]);

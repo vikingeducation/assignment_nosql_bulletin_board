@@ -1,0 +1,9 @@
+<div class='card'>
+  <div class='card-block'>
+    <h4 class='card-title'>
+      {{ comment.votes }} | {{ comment.author }}
+    <h4>
+    <p>Posted on {{ comment.created_at | date }}</p>
+    <p>"{{ comment.content }}"</p>
+  </div>
+</div>
