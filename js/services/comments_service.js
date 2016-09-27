@@ -8,6 +8,25 @@ BulletinBoard.factory('CommentsService',
 
     var _comments, _id;
 
+    var _extendComments = function( comments ){
+
+      // Exted all comments in the list
+      _.each(comments, function(comment){
+        _extendComment(comment);
+      });
+
+    };
+
+    var _extendComment = function( comment ){
+      comment.increaseLikes = function(){
+        this.likes += 1;
+      };
+
+      comment.decreaseLikes = function(){
+        this.likes -= 1;
+      };
+    };
+
     // ----------------------------------------
     // Public
     // ----------------------------------------
@@ -53,6 +72,9 @@ BulletinBoard.factory('CommentsService',
       // Add the comment to the comments list
       // at the key of the comment's ID
       _comments[nextId] = comment;
+
+      // Extending this comment
+      _extendComment(comment);
 
       // Gotta add this id to the 
 
