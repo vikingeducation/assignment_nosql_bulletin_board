@@ -60,6 +60,14 @@ app.factory('commentsService', ['$http', 'postsService', '_', function($http, po
     return new Promise(function(resolve) {resolve(comment)} );
   }
 
+  stub.upVote = function(id) {
+    return  _comments[id].votes ++;
+  }
+
+  stub.downVote = function(id) {
+    return  _comments[id].votes --;
+  }
+
 
   return stub
 
