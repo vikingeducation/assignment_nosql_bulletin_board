@@ -1,0 +1,17 @@
+What are the needs of my views?
+Associations:
+Post: has many comments
+
+Properties
+Comments have: score, date, text, author, postId
+Posts have: title, text, date, author
+
+
+Routes: new comment, add upvote/downvote,
+
+Order comments under post by score
+Order recent comments section by date
+
+
+How can I fit those needs using NoSQL data modeling strategies?
+Documents. 
