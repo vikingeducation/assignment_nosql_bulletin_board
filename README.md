@@ -9,9 +9,10 @@ Posts
 -Title
 -Body
 -Author
--Comments
+-Comments = [4,6,8]
         -ID
         -Author
         -Comment
         -Created_at
         -Votes
+        

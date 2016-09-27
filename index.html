@@ -10,24 +10,34 @@ e<html ng-app="BulletinBoard">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.js"></script>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+      <!-- App -->
+    <script src="app.js"></script>
+    <!-- Controllers -->
+    <script src="controllers/controller.js"></script>
+    <!-- Directives -->
+
+    <!-- Services -->
+    <script src="services/posts_service.js"></script>
+    <script src="services/comments_service.js"></script>
     
 
   </head>
 
   <body ng-controller= "PostsCtrl">
 
-    <div class="col-xs-6" ng-repeat="post in posts">
-
+    <div class="col-xs-6 card bg-inverse" ng-repeat="(postId, values) in posts">
+      <p>Key: {{postId}}</p>
+      <p>Same Key as above:{{values.id}}</p>
+      <p>Created At:{{values.created_at | date}}</p>
+      <p>Title:{{values.title}}</p>
+      <p>Body:{{values.body}}</p>
+      <p>Author:{{values.author}}</p>
+      <p>Comment IDs:{{values.comments}}</p>
     </div>
+
+    
 
 
   </body>
 
-  <!-- App -->
-    <script src="app.js"></script>
-    <!-- Controllers -->
-    <script src="controllers/controller.js"></script>
-    <!-- Directives -->
-   <script src="services/posts_service.js"></script>
-    <!-- Services -->
 </html>
