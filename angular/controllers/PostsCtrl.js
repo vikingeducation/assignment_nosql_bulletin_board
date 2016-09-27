@@ -6,10 +6,10 @@ BulletinBoard.controller("PostsCtrl", ["$scope", "postsService", "commentsServic
   })
 
   var _getLastId = function() {
-    console.log(Object.keys($scope.allComments))
-    return Math.max(_.map(Object.keys($scope.allComments), function(el) {
+    var integerArray = _.map(Object.keys($scope.allComments), function(el) {
         return parseInt(el)
-    }));
+    })
+    return _.max(integerArray);
   };
 
 
@@ -20,8 +20,13 @@ BulletinBoard.controller("PostsCtrl", ["$scope", "postsService", "commentsServic
     comment.postId = "1";
     comment.date = new Date();
     comment.id =  $scope.lastId + 1;
+    comment.score = 0;
     $scope.lastId++
-    $scope.allComments[String(comment)] = comment;
+    $scope.allComments[String(comment.id)] = comment;
+    $scope.post.comments.push(comment.id);
+    console.log($scope.allComments)
+    console.log($scope.post.comments)
+    $scope.postComments = filterCommentsByPost($scope.post);
   }
 
   // helpers
