@@ -13,6 +13,7 @@ app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", functi
   });
 
   $scope.createComment = function() {
+    console.log($scope.this_post);
     commentsService.createComment($scope.postComment);
   }
 

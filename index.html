@@ -15,13 +15,14 @@ e<html ng-app="BulletinBoard">
     <!-- Controllers -->
     <script src="controllers/controller.js"></script>
     <!-- Directives -->
-
+    <script src="directives/comment_directive.js"></script>
     <!-- Services -->
     <script src="services/posts_service.js"></script>
     <script src="services/comments_service.js"></script>
 
     <!--Filters -->
     <script src="filters/comment_obj_to_array.js"></script>
+    <script src="filters/filter_by_ids.js"></script>
     
 
   </head>
@@ -29,14 +30,16 @@ e<html ng-app="BulletinBoard">
   <body ng-controller= "PostsCtrl">
     <div class="container-fluid">
       <div class="col-xs-6 card bg-inverse" 
-      ng-repeat="(postId, values) in posts">
+      ng-repeat="(postId, post) in posts">
         <p>Key: {{postId}}</p>
-        <p>Same Key as above:{{values.id}}</p>
-        <p>Created At:{{values.created_at | date}}</p>
-        <p>Title:{{values.title}}</p>
-        <p>Body:{{values.body}}</p>
-        <p>Author:{{values.author}}</p>
-        <p>Comment IDs:{{values.comment_ids}}</p>
+        <p>Same Key as above:{{post.id}}</p>
+        <p>Created At:{{post.created_at | date}}</p>
+        <p>Title:{{post.title}}</p>
+        <p>Body:{{post.body}}</p>
+        <p>Author:{{post.author}}</p>
+        <p>Comment IDs:{{post.comment_ids}}</p>
+
+
         <div class="card bg">
           <form ng-submit="createComment()">
             <input type="text" ng-model="postComment.author" class="form-control">
@@ -45,18 +48,15 @@ e<html ng-app="BulletinBoard">
             <input type="submit", class="btn btn-outline-warning btn-lg">
           </form>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-6 card card-outline-primary" 
-        ng-repeat="comment in comments | objToArrayFilter | orderBy: '-votes'">
-          <p>Votes: {{comment.votes}}</p>
-          <p>Author: {{comment.author}}</p>
-          <p>Body: {{comment.body }}</p>
-          <p>Comment: {{comment.created_at}}</p>
+
+        <div class="row">
+          <div class="col-xs-6 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:post.comment_ids | orderBy: '-votes'" comment="comment"></div>
         </div>
       </div>
+
+    </div>
+    <div class="container">
+      
 
       <div class="row">
         <h3> Recent Comments</h3>
