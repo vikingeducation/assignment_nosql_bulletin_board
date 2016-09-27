@@ -3,27 +3,26 @@ BulletinBoard.controller("PostsCtrl", ["$scope", "postsService", "commentsServic
   postsService.getPost().then(function(response) {
     $scope.post = response.data["1"];
     getAllComments();
-    
   })
 
-  $scope.comment = {}
-
-  var _getNewId = function() {
-    return Math.max(_.map($scope.allComments.keys(), function(el) {
+  var _getLastId = function() {
+    console.log(Object.keys($scope.allComments))
+    return Math.max(_.map(Object.keys($scope.allComments), function(el) {
         return parseInt(el)
-    })) + 1;
+    }));
   };
+
+
+  $scope.comment = {}
 
 
   $scope.handleCommentForm = function(comment) {
     comment.postId = "1";
     comment.date = new Date();
-    comment.id = _getNewId();
-    commentsService.newComment(comment).then(function(response) {
-      $scope.getAllComments()
-    })
+    comment.id =  $scope.lastId + 1;
+    $scope.lastId++
+    $scope.allComments[String(comment)] = comment;
   }
-
 
   // helpers
 
@@ -31,6 +30,7 @@ BulletinBoard.controller("PostsCtrl", ["$scope", "postsService", "commentsServic
     commentsService.getAllComments().then(function (response) {
       // angular.copy($scope.allComments, response.data); // ????
       $scope.allComments = response.data
+      $scope.lastId = _getLastId()
       $scope.postComments = filterCommentsByPost($scope.post);
     });
   }
@@ -43,7 +43,7 @@ BulletinBoard.controller("PostsCtrl", ["$scope", "postsService", "commentsServic
       }
     }
     return postComments;
-  };  
+  };
 
 
 }])
