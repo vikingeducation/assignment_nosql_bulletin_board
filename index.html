@@ -30,7 +30,7 @@
   <body ng-controller= "PostsCtrl">
 
     <div class="container-fluid">
-      <div class="col-xs-6 card bg-inverse" 
+      <div class="col-xs-8 card bg-inverse" 
       ng-repeat="(postId, post) in posts">
         <p>Key: {{postId}}</p>
         <p>Same Key as above:{{post.id}}</p>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-6 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:post.comment_ids | orderBy: '-votes'" comment="comment"></div>
+          <div class="col-xs-8 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:post.comment_ids | orderBy: '-votes'" comment="comment"></div>
         </div>
       </div>
 

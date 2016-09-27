@@ -33,12 +33,13 @@ app.factory('commentsService', ['$http', 'postsService', '_', function($http, po
 
   // one - create the comment
   // two - append id to post
-  stub.createComment = function(params) {
+  stub.createComment = function(params, commentable) {
     //create a new comment object
 
     var comment = {}
     comment.author = params.author;
     comment.body = params.body;
+
     var postId = params.postId;
     comment.created_at = new Date().toISOString().slice(0, 10);
     comment.votes = 0;

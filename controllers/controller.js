@@ -14,7 +14,7 @@ app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", functi
   });
 
   $scope.createComment = function() {
-    commentsService.createComment($scope.postComment);
+    commentsService.createComment($scope.postComment, "post");
     $scope.postComment.author = "";
     $scope.postComment.body = "";
   }

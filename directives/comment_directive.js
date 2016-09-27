@@ -7,7 +7,7 @@ app.directive('commentsDirective', [ "commentsService", function(commentsService
 
     scope: {
       comment: '=',
-      postComment: '='
+      commentComment: "="
     },
 
     link: function(scope) {
@@ -20,7 +20,7 @@ app.directive('commentsDirective', [ "commentsService", function(commentsService
       };
 
       scope.createComment = function() {
-
+        commentService.createComment(scope.commentComment, "comment")
         console.log(scope.commentComment);
       }
 
