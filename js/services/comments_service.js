@@ -23,7 +23,13 @@ BulletinBoard.factory('CommentsService',
       })
         .then(function(response) {
           // Set _birthdays to the response data
-          return _comments = response.data;
+          // if there's no comments yet
+          // Is this happening because it's pointing to a reference object instead of a scalar value?
+          // At this point this is all I need but in the future I'll have to look at this further.
+          // Well how about I change it up so that it doesn't even make the http call unless there's no data already.
+          _comments = _comments || response.data;
+
+          return _comments;
         });
     };
 

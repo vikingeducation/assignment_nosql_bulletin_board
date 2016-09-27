@@ -1,7 +1,8 @@
-BulletinBoard.controller("RecentCommentsController", ['$scope', '$http', '_', 'CommentsService', function($scope, $http, _, CommentsService){
+BulletinBoard.controller("RecentCommentsController", ['$scope', '_', 'CommentsService', function($scope, _, CommentsService){
+
 	CommentsService.all()
-		.then(function(comments){ 
-			$scope.comments = comments;
+		.then(function(comments){
+			$scope.comments = comments
 
 			$scope.commentsInArray = function(){
 				var p = [];
@@ -15,4 +16,5 @@ BulletinBoard.controller("RecentCommentsController", ['$scope', '$http', '_', 'C
 	$scope.formatDate = function(date){
 		return moment(date).format('MMMM Do YYYY');
 	};
+
 }]);

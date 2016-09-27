@@ -28,7 +28,7 @@ BulletinBoard.controller("PostsController", ['$scope', '_', 'PostsService', 'Com
 	$scope.createComment = function(postId){
 		CommentsService.create( $scope.commentParams )
 			.then(function( comment ){
-				$scope.posts[postId].addComment(postId);
+				$scope.posts[postId].addComment(comment.id);
 			})
 	};
 
