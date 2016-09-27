@@ -45,6 +45,14 @@ app.factory('CommentsSer', ['$http', '_', 'PostsSer', function($http, _, PostsSe
 		return _id + 1;
 	};
 
+	CommentsSer.upvote = function(comment){
+		_comments[comment.id].voteCount++;
+	};
+
+	CommentsSer.downvote = function(comment){
+		_comments[comment.id].voteCount--;
+	};
+
 	return CommentsSer;
 
 }]);

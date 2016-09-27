@@ -1,0 +1,5 @@
+   <h2><span class="glyphicon glyphicon-chevron-up" ng-click="upvote({comment: comment})"> </span>
+      <span class="glyphicon glyphicon-chevron-down" ng-click="downvote({comment: comment})"> </span>
+      {{comment.voteCount}} | {{comment.author}}</h2>
+      <p>Commented on {{comment.date | date}}</p>
+      <p>{{comment.text}}</p>

@@ -17,6 +17,14 @@ app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function(
       CommentsSer.create($scope.commentParams);
       $scope.commentParams = {};
    };
+
+   $scope.upvote = function(comment){
+      CommentsSer.upvote(comment);
+   };
+
+   $scope.downvote = function(comment){
+    CommentsSer.downvote(comment);
+   };
 }]);
 
 

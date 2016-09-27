@@ -9,14 +9,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.2/lodash.js"></script>
 </head>
 <body ng-controller="PostsCtrl">
+<div class="container">
+  <div class="row">
 
-
-
-  <h1>NoSQL Bulletin Board</h1>
+  <h1 class="text-center">NoSQL Bulletin Board</h1>
   <div class="col-sm-5">
       <h3>Recent Comments</h3>
       <div ng-repeat="comment in comments | objToArray | orderBy: 'date'">
-        <h2>{{comment.voteCount}} | {{comment.author}}</h2>
+        <h2><span class="glyphicon glyphicon-chevron-up" ng-click="upvote(comment)"> </span>
+      <span class="glyphicon glyphicon-chevron-down" ng-click="downvote(comment)"> </span>
+      {{comment.voteCount}} | {{comment.author}}</h2>
         <p>Commented on {{comment.date | date}}</p>
         <p>{{comment.text}}</p>
       </div>
@@ -45,16 +47,16 @@
       <input type='submit' ng-click="createComment()"/>
     </form>
 
-    <div ng-repeat="comment in comments">
-      <h2>{{comment.voteCount}} | {{comment.author}}</h2>
-      <p>Commented on {{comment.date | date}}</p>
-      <p>{{comment.text}}</p>
+    <div ng-repeat="comment in comments | objToArray | orderBy: '-voteCount'">
+      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
     </div>
 
   </div>
-
-  <script src="js/app.js"></script>,
+  </div>
+</div>
+  <script src="js/app.js"></script>
   <script src="js/comments.js"></script>
   <script src="js/posts_controller.js"></script>
+  <script src="js/directives.js"></script>
 </body>
 </html>
