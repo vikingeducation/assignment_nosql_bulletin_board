@@ -15,13 +15,14 @@
     <div class="col-xs-6" ng-controller="RecentCommentsCtrl">
       <h1>Most Recent Comments</h1>
 
-      <div ng-repeat="value in allComments | objectToArray | orderBy: 'date' ">
+      <div ng-repeat="value in allComments | objectToArray | orderBy: '-date' ">
         <h2>{{ value.author }}</h2>
         <p>{{ value.date | date }}</p>
         <p>{{ value.text }}</p>
         <p>{{ value.score }}</p>
       </div>
     </div>
+
 
     <div class="col-xs-6" ng-controller="PostsCtrl">
       <div>
@@ -30,6 +31,16 @@
         <p>{{post.date | date}}</p>
         <p>{{post.text}}</p>
       </div>
+
+      <hr>
+
+      <form ng-submit="handleCommentForm(comment)">
+        <label>Comment</label>
+        <input type="text" ng-model="comment.text">
+        <label>Author</label>
+        <input type="text" ng-model="comment.author">
+        <input type="submit" name="submit">
+      </form>
 
       <hr>
 

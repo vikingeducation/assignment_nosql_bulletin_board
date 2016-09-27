@@ -1,13 +1,19 @@
 BulletinBoard.factory("commentsService", ['$http', function($http) {
-  getAllComments = function() {
+  var getAllComments = function() {
     return $http({
       url: "data/comments.json",
       method: "GET"
-    });
+    })
+  };
+
+
+  var newComment = function(comment) {
+    
   };
 
 
   return {
-    getAllComments: getAllComments
+    getAllComments: getAllComments,
+    newComment: newComment
   };
 }]);
