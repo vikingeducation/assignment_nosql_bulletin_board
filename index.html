@@ -9,28 +9,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <title>NoSQL Bulletin Board</title>
 </head>
-<body ng-controller="PostsCtrl">
+<body>
   <div class="row"></div>
-  <div class="col-xs-6"></div>
 
-  <div class="col-xs-6">
-    <div>
-      <h2>{{ post.title}}</h2>
-      <p>{{ post.author}}</p>
-      <p>{{post.date}}</p>
-      <p>{{post.text}}</p>
+    <div class="col-xs-6" ng-controller="RecentCommentsCtrl">
+      <div ng-repeat="(key, value) in allComments | orderByDate">
+        <h2>{{ value.author }}</h2>
+        <p>{{ value.date | date }}</p>
+        <p>{{ value.text }}</p>
+        <p>{{ value.score }}</p>
+      </div>      
     </div>
 
-    <div ng-repeat="comment in postComments">
-      <h2>{{ comment.author }}</h2>
-      <p>{{ comment.date }}</p>
-      <p>{{ comment.text }}</p>
+    <div class="col-xs-6" ng-controller="PostsCtrl">
+      <div>
+        <h2>{{ post.title}}</h2>
+        <p>{{ post.author}}</p>
+        <p>{{post.date | date}}</p>
+        <p>{{post.text}}</p>
+      </div>
+
+      <div ng-repeat="comment in postComments | orderBy:'-score'">
+        <h2>{{ comment.author }}</h2>
+        <p>{{ comment.date | date}}</p>
+        <p>{{ comment.text }}</p>
+        <p>{{ comment.score }}</p>
+      </div>
     </div>
-  </div>
 
   <script src="app.js"></script>
   <script src="angular/services/postsService.js"></script>
   <script src="angular/services/commentsService.js"></script>
   <script src="angular/controllers/PostsCtrl.js"></script>
+  <script src="angular/controllers/RecentCommentsCtrl.js"></script>
+
+  <!-- filters -->
+  <script src="angular/filters/orderByDate.js"></script>
+
 </body>
 </html>

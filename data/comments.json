@@ -3,7 +3,16 @@
     "id": 1,
     "author": "Sum Person",
     "text": "Sum Thing",
-    "date": "05/23/1998",
-    "postId": 1
+    "date": "2014-09-27T18:00:18.499Z",
+    "postId": 1,
+    "score": 0
+  }, 
+  "2": {
+    "id": 2,
+    "author": "Sum Person",
+    "text": "Sum Thing",
+    "date": "2013-09-27T18:00:18.499Z",
+    "postId": 1,
+    "score": 1
   }
 }
