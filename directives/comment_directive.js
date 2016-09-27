@@ -4,8 +4,10 @@ app.directive('commentsDirective', [ "commentsService", function(commentsService
     templateUrl: "templates/comments.html",
     restrict: "A",
     
+
     scope: {
-      comment: '='
+      comment: '=',
+      postComment: '='
     },
 
     link: function(scope) {
@@ -16,7 +18,15 @@ app.directive('commentsDirective', [ "commentsService", function(commentsService
       scope.downVote = function() {
         commentsService.downVote(scope.comment.id);
       };
+
+      scope.createComment = function() {
+
+        console.log(scope.commentComment);
+      }
+
+
     }
+
   }
 
 }]);

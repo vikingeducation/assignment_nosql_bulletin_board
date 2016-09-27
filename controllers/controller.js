@@ -1,6 +1,7 @@
 app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", function($scope, postsService, commentsService) {
 
   $scope.postComment = {};
+  $scope.commentComment = {};
 
   postsService.all()
     .then(function(posts) {
@@ -14,6 +15,8 @@ app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", functi
 
   $scope.createComment = function() {
     commentsService.createComment($scope.postComment);
+    $scope.postComment.author = "";
+    $scope.postComment.body = "";
   }
 
   $scope.upVote = function(comment) {
