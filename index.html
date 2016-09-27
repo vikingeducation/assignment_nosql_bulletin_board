@@ -84,6 +84,8 @@
               <div class="comments">
                 <div class="comment" ng-repeat="comment in postsComments(1) | orderBy: 'likes' : true" style="margin-bottom: 15px;">
                   {{ comment.likes }}
+                  <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="comment.increaseLikes()"></span>
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="comment.decreaseLikes()"></span><br>
                   {{ comment.author }}
                   <h5>Commented on {{ formatDate(comment.date) }}</h5>
                   {{ comment.body }}
