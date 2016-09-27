@@ -7,13 +7,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
   </head>
-  <body ng-controller="PostCtrl">
+  <body>
+    <h1 class="text-center">NoSQL Bulletin Board</h1>
 
-    <h1>Posts</h1>
-    <post ng-repeat='post in posts' post='post'></post>
+    <div class="container">
+      <div class="row">
 
-    <h3>comments</h3>
-    <comment ng-repeat="comment in comments | orderObjectBy:'votes' " comment='comment'></comment>
+        <div ng-controller="RecentCommentsCtrl" class="col-md-4">
+          <comment ng-repeat="comment in comments | orderObjectBy:'created_at'" comment='comment'></comment>
+        </div>
+
+        <div ng-controller="PostCtrl" class="col-md-8">
+          <h2>Posts</h2>
+          <post ng-repeat='post in posts' post='post'></post>
+
+          <h4>Comments</h4>
+          <comment ng-repeat="comment in comments | orderObjectBy:'votes':true " comment='comment'></comment>
+        </div>
+
+      </div> <!-- closing row -->
+    </div> <!-- closing container -->
 
     <script type="text/javascript" src="js/app.js"></script>
 
@@ -23,6 +36,7 @@
 
     <!-- Controllers -->
     <script type="text/javascript" src="js/controllers/PostCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/RecentCommentsCtrl.js"></script>
 
     <!-- Filters -->
     <script type="text/javascript" src="js/filters/orderObjectBy.js"></script>
