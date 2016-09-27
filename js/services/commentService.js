@@ -12,10 +12,14 @@ angular.module('bulletinBoard').factory(
     }).then(function(response) {
       var comments =  angular.copy(response.data, _comments);
       for (var comment in comments) {
-        _extendComment(comments[comment])
+        _extendComment(comments[comment]);
       }
       return comments;
     });
+  };
+
+  var _updateCommentComment = function(post_id, comment_id) {
+    _comments[post_id].comments.push(comment_id);
   };
 
   var getComments = function() {
@@ -54,7 +58,7 @@ angular.module('bulletinBoard').factory(
     comment.downvote = function(event) {
       event.preventDefault();
       _comments[comment.id].votes--;
-    }
+    };
   };
 
   var _createComment = function (commentParams) {
@@ -65,7 +69,17 @@ angular.module('bulletinBoard').factory(
     _comments[nextId] = comment;
     _extendComment(comment);
     _id++;
-    postService.updatePostComment(comment.post_id, comment.id);
+
+    // Commentables
+    switch (comment.commentable_type) {
+      case 'post':
+        postService.updatePostComment(comment.post_id, comment.id);
+        break;
+      case 'comment':
+        _updateCommentComment(comment.post_id, comment.id);
+        break;
+    }
+
     return Promise.resolve(comment);
   };
 

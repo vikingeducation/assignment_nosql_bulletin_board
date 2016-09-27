@@ -14,7 +14,8 @@ angular.module('bulletinBoard').directive(
           author: scope.commentAuthor,
           content: scope.commentContent,
           created_at: new Date().toISOString().slice(0, 10),
-          post_id: scope.post.id
+          post_id: scope.post.id,
+          commentable_type: 'post'
         });
         scope.commentAuthor = '';
         scope.commentContent = '';
@@ -22,7 +23,7 @@ angular.module('bulletinBoard').directive(
       scope.getComments = function(commentsArr) {
         var comments = [];
         for (var i = 0; i < commentsArr.length; i++) {
-          comments.push(commentService.getComments()[commentsArr[i]])
+          comments.push(commentService.getComments()[commentsArr[i]]);
         }
         return comments;
       };
