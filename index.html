@@ -24,6 +24,7 @@ e<html ng-app="BulletinBoard">
     <script src="filters/comment_obj_to_array.js"></script>
     <script src="filters/filter_by_ids.js"></script>
     
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
   </head>
 
@@ -59,7 +60,7 @@ e<html ng-app="BulletinBoard">
       
 
       <div class="row">
-        <h3> Recent Comments</h3>
+        <h3> Recent Comments <i class="fa fa-arrow-up fa-6x" aria-hidden="true"></i></h3>
         <div class="col-xs-12 card card-outline-success" ng-repeat="comment in comments | objToArrayFilter | orderBy: '-created_at' | limitTo: 3">
           <p>Votes: {{comment.votes}}</p>
           <p>Author: {{comment.author}}</p>
