@@ -13,13 +13,19 @@ angular.module('bulletinBoard').directive(
         commentService.addComment({
           author: scope.commentAuthor,
           content: scope.commentContent,
-          created_at: (new Date()),
+          created_at: new Date().toISOString().slice(0, 10),
           post_id: scope.post.id
         });
+        scope.commentAuthor = '';
+        scope.commentContent = '';
       };
-      // Resetting form.
-      scope.commentAuthor = '';
-      scope.commentContent = '';
+      scope.getComments = function(commentsArr) {
+        var comments = [];
+        for (var i = 0; i < commentsArr.length; i++) {
+          comments.push(commentService.getComments()[commentsArr[i]])
+        }
+        return comments;
+      };
     }
   };
 

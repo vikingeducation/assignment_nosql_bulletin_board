@@ -20,9 +20,6 @@
         <div ng-controller="PostCtrl" class="col-md-8">
           <h2>Posts</h2>
           <post ng-repeat='post in posts' post='post'></post>
-
-          <h4>Comments</h4>
-          <comment ng-repeat="comment in comments | orderObjectBy:'votes':true " comment='comment'></comment>
         </div>
 
       </div> <!-- closing row -->

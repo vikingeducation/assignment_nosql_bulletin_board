@@ -1,8 +1,8 @@
 angular.module('bulletinBoard').factory(
   "commentService",
-  ["$http", "postService", function($http, postService) {
+  ["$http", "postService", "_", function($http, postService, _) {
 
-  var _comments = [];
+  var _comments = {};
   var _id;
 
   var _populateComments = function() {
@@ -10,15 +10,19 @@ angular.module('bulletinBoard').factory(
       method: 'GET',
       url: '/data/comments.json'
     }).then(function(response) {
-      return angular.copy(response.data, _comments);
+      var comments =  angular.copy(response.data, _comments);
+      for (var comment in comments) {
+        _extendComment(comments[comment])
+      }
+      return comments;
     });
   };
 
   var getComments = function() {
-    if (_comments.length) {
-      return _comments;
-    } else {
+    if (_.isEmpty(_comments)) {
       return _populateComments();
+    } else {
+      return _comments;
     }
   };
 
@@ -43,6 +47,14 @@ angular.module('bulletinBoard').factory(
     comment.destroy = function() {
       delete _comments[comment.id];
     };
+    comment.upvote = function(event) {
+      event.preventDefault();
+      _comments[comment.id].votes++;
+    };
+    comment.downvote = function(event) {
+      event.preventDefault();
+      _comments[comment.id].votes--;
+    }
   };
 
   var _createComment = function (commentParams) {
@@ -50,7 +62,7 @@ angular.module('bulletinBoard').factory(
     var comment = angular.copy(commentParams, {});
     var nextId = _nextId();
     comment.id = nextId;
-    _comments.push(comment);
+    _comments[nextId] = comment;
     _extendComment(comment);
     _id++;
     postService.updatePostComment(comment.post_id, comment.id);

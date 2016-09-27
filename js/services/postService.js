@@ -1,6 +1,6 @@
-angular.module('bulletinBoard').factory("postService", ["$http", function($http) {
+angular.module('bulletinBoard').factory("postService", ["$http", "_", function($http, _, commentService) {
 
-  var _posts = [];
+  var _posts = {};
 
   var _populatePosts = function() {
     return $http({
@@ -12,10 +12,10 @@ angular.module('bulletinBoard').factory("postService", ["$http", function($http)
   };
 
   var getPosts = function() {
-    if (_posts.length) {
-      return _posts;
-    } else {
+    if (_.isEmpty(_posts)) {
       return _populatePosts();
+    } else {
+      return _posts;
     }
   };
 

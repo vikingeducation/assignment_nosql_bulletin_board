@@ -1,13 +1,11 @@
 <div class='card'>
 
-  <div class='card-block'>
-    <h4 class='card-title'>
-      {{ post.title }}
-    <h4>
-    <p>{{ post.content }}</p>
-    <p>Posted on {{ post.created_at | date }}</p>
-  </div>
-  <p>Create a Comment</p>
+  <h3>
+    {{ post.title }}
+  </h3>
+  <p>{{ post.content }}</p>
+  <p>Posted on {{ post.created_at | date }}</p>
+  <h4>Create a Comment</h4>
 
   <form>
     <div class="form-group">
@@ -20,5 +18,8 @@
     </div>
     <input ng-click='addComment($event, post.id)' type="submit" class="btn btn-primary">
   </form>
+
+  <h4>Comments</h4>
+  <comment ng-repeat="comment in getComments(post.comments) | orderObjectBy:'votes':true " comment='comment'></comment>
 
 </div>
