@@ -17,6 +17,13 @@ BulletinBoard.factory('CommentsService', ['_', '$http', 'PostsService', function
     comment.downvote = function(){
       comment.score--;
     };
+    comment.getComments = function(allcomments){
+      if(allcomments){
+        return _.map(comment.child_comments, function(child_comment_id){
+          return allcomments[child_comment_id];
+        });
+      }
+    };
   };
 
   var _nextId = function() {
@@ -32,16 +39,32 @@ BulletinBoard.factory('CommentsService', ['_', '$http', 'PostsService', function
     return _id + 1;
   };
 
-  CommentsService.add = function(params, post_id) {
+  CommentsService.add = function(params, parent_id, parent_type) {
+    console.log(params);
     var comment = angular.copy(params, {});
     comment.score = 0;
     comment.date = Date.now();
-    comment.post_id = post_id;
+    comment.parent_id = parent_id;
+    comment.parent_type = parent_type;
+    comment.child_comments = [];
     _extendComment(comment);
     var nextId = _nextId();
+    comment.id = nextId;
     _comments[nextId] = comment;
-    PostsService.addComment(comment.post_id, nextId);
+    if(parent_type === 'post'){
+      PostsService.addComment(comment.parent_id, nextId);
+    } else if(parent_type === 'comment'){
+      CommentsService.addComment(comment.parent_id, nextId);
+    }
     _id += 1;
+  };
+
+  CommentsService.addComment = function(parentId, childId){
+    var parentComment = _comments[parentId];
+    parentComment.child_comments.push(childId);
+    // console.log(parentComment);
+    // console.log(parentComment.child_comments);
+    // console.log(_comments);
   };
 
   CommentsService.all = function() {

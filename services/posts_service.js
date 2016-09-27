@@ -11,7 +11,7 @@ BulletinBoard.factory('PostsService', ['_', '$http', function(_, $http){
           return comments[comment_id];
         });
       }
-    }
+    };
   };
 
   var _extendPosts = function(posts){

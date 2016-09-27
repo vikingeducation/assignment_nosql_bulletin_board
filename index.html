@@ -21,7 +21,7 @@
         <p>{{post.body}}</p>
 
         <div class="comment-form">
-          <form ng-submit="addComment(post.id)">
+          <form ng-submit="addComment(post.id, 'post')">
             <label>Author</label>
             <input type="text" ng-model="commentParams.user">
             <label>Comment</label>
@@ -30,7 +30,7 @@
           </form>
         </div>
 
-        <comment ng-repeat="comment in post.getComments(allcomments) | orderBy: '-score'" comment="comment"></comment>
+        <comment ng-repeat="comment in post.getComments(allcomments) | orderBy: '-score'" comment="comment" allcomments="allcomments" add-nested-comment="addNestedComment(parent, parent_type)" nested-comment-params="nestedCommentParams[comment.id]"></comment>
       </div>
     </div>
   </body>
