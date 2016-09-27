@@ -4,7 +4,7 @@ BulletinBoard.controller("RecentCommentsController", ['$scope', '$http', '_', 'C
 			$scope.comments = comments;
 
 			$scope.commentsInArray = function(){
-				p = [];
+				var p = [];
 				_.each( comments, function(comment){ 
 					p.push( comment );
 				});
