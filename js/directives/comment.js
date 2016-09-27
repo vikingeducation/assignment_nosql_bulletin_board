@@ -6,9 +6,15 @@ angular.module('bulletinBoard').directive(
     templateUrl: 'js/directives/comment.html',
     restrict: 'E',
     scope: {
-      comment: '='
+      comment: '=',
+      recent: '@'
     },
     link: function(scope) {
+      scope.showComment = false;
+      scope.showOrHideComment = function(event) {
+        event.preventDefault();
+        scope.showComment = !scope.showComment
+      };
       scope.addComment = function(event) {
         event.preventDefault();
         commentService.addComment({
