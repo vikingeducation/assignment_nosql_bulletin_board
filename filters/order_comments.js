@@ -1,9 +1,9 @@
 bb.filter('orderComments', ["_", function(_){
 
   return function(collection, filterParam) {
-    var sortedArr = _.sortBy(collection, function(index) {
-      return (downvotes.length - comment.upvotes.length);
+    var sortedArr = _.sortBy(collection, function(element) {
+      return element[filterParam];
     });
-    return sortedArr
+    return sortedArr.reverse();
   }
 }])

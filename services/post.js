@@ -1,4 +1,4 @@
-bb.factory("PostService", ['CommentService', '$http', function(CommentService, $http){
+bb.factory("PostService", ['$http', function($http){
 
   obj = {};
 
@@ -15,6 +15,10 @@ bb.factory("PostService", ['CommentService', '$http', function(CommentService, $
       _posts = response.data;
       return _posts;
     })
+  }
+
+  obj.addComment = function(postId, commentId){
+    _posts[postId].comments.push(commentId);
   }
 
 

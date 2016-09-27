@@ -20,7 +20,7 @@
     <div class="col-sm-4" ng-controller="RecentCommentsCtrl">
       <h2>Recent Comments</h2>
       <ul>
-        <li ng-repeat="comment in comments | orderComments:'date' | limitTo: 3" comment-div comment='comment'>
+        <li ng-repeat="comment in comments | orderComments:'date':true | limitTo: 3" comment-div comment='comment'>
         </li>
       </ul>
     </div>
@@ -41,5 +41,6 @@
 <script type="text/javascript" src="/controllers/post_ctrl.js"></script>
 <script type="text/javascript" src="/controllers/recent_comments_ctrl.js"></script>
 <script type="text/javascript" src="/filters/score_filter.js"></script>
+<script type="text/javascript" src="/filters/order_comments.js"></script>
 
 </html>
