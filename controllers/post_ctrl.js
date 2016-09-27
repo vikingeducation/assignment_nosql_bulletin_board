@@ -17,7 +17,7 @@ bb.controller('PostCtrl', ['$scope', 'CommentService', 'PostService', function($
   $scope.createComment = function() {
     var commentCopy = angular.copy($scope.commentParams, {});
     CommentService.create(commentCopy, $scope.post.id);
-  }
+  };
 
 
 }]);

@@ -1,3 +1,6 @@
-<h3>{{ comment.upvotes.length - comment.downvotes.length }}</h3>
+<h3 class='votes'>
+<img src="https://image.freepik.com/free-icon/upload_318-140715.jpg" ng-click="comment.upvote()">
+<img src="https://image.freepik.com/free-icon/download_318-140686.jpg" ng-click="comment.downvote()">
+{{ comment.upvotes.length - comment.downvotes.length }}</h3>
 <h3>{{comment.author}} on {{comment.date | date}}</h3>
 <p>{{ comment.body }}</p>

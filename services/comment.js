@@ -3,7 +3,7 @@ bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, Po
   obj = {};
 
   var _id;
-  var _comments;
+  var _comments = {};
 
   obj.list = function() {
     return $http({
@@ -11,9 +11,11 @@ bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, Po
       method: 'GET'
     })
     .then(function(response){
-      _comments = response.data;
+      angular.copy(response.data, _comments);
+
+      _extendComments(_comments);
       return _comments;
-    })
+    });
   };
 
   obj.nextId = function(){
@@ -23,7 +25,7 @@ bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, Po
       }
       var ids = _.map(Object.keys(_comments), function(id){
         return parseInt(id);
-      })
+      });
 
       _id = _.max(ids);
 
@@ -39,8 +41,27 @@ bb.factory("CommentService",  ['$http', '_', 'PostService', function($http,_, Po
     commentObj.id = obj.nextId();
     _comments[obj.nextId()] = commentObj;
     _id++;
-    PostService.addComment(postId, commentObj.id)
-    return new Promise(function(resolve) { resolve(commentObj)});
+    _extendComment(commentObj);
+    PostService.addComment(postId, commentObj.id);
+    // return new Promise(function(resolve) { resolve(commentObj)});
+  };
+
+  var _extendComment = function(comment) {
+    comment.upvote = function() {
+      comment.upvotes.push(1);
+    };
+    comment.downvote = function() {
+      comment.downvotes.push(1);
+    };
+    comment.destroy = function() {
+      delete _comments[comment.id];
+    };
+  };
+
+  var _extendComments = function(comments) {
+    _.each(comments, function(comment) {
+      _extendComment(comment);
+    });
   };
 
   return obj;
