@@ -3,3 +3,11 @@ var app = angular.module('BulletinBoard', []);
 app.factory('_', ['$window', function($window){
   return $window._;
 }]);
+
+app.filter('objToArray', ['_', function(){
+  return function(obj) {
+    return _.map(obj, function(item){
+      return item;
+    });
+  };
+}]);

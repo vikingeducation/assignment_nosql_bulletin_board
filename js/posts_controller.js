@@ -15,6 +15,7 @@ app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function(
 
    $scope.createComment = function(){
       CommentsSer.create($scope.commentParams);
+      $scope.commentParams = {};
    };
 }]);
 

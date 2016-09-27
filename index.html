@@ -15,6 +15,11 @@
   <h1>NoSQL Bulletin Board</h1>
   <div class="col-sm-5">
       <h3>Recent Comments</h3>
+      <div ng-repeat="comment in comments | objToArray | orderBy: 'date'">
+        <h2>{{comment.voteCount}} | {{comment.author}}</h2>
+        <p>Commented on {{comment.date | date}}</p>
+        <p>{{comment.text}}</p>
+      </div>
   </div>
   <div class="col-sm-7">
     <h3>Posts</h3>
