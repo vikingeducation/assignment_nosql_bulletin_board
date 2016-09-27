@@ -9,7 +9,8 @@ function($scope, postService, commentService) {
 
   commentService.getComments().then(function(data) {
     $scope.comments = data;
-    console.log($scope.comments);
+  }).catch(function(reason) {
+    console.log(['error:', reason].join(''));
   });
 
 }]);

@@ -12,13 +12,13 @@
   <form>
     <div class="form-group">
       <label>Author</label>
-      <input type="text" name="author" class="form-control">
+      <input ng-model='commentAuthor' type="text" name="author" class="form-control">
     </div>
     <div class="form-group">
       <label>Comment</label>
-      <textarea class="form-control"></textarea>
+      <textarea ng-model='commentContent' class="form-control"></textarea>
     </div>
-    <input type="submit" class="btn btn-primary">
+    <input ng-click='addComment($event, post.id)' type="submit" class="btn btn-primary">
   </form>
 
 </div>

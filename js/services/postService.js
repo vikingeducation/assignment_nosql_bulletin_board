@@ -7,8 +7,7 @@ angular.module('bulletinBoard').factory("postService", ["$http", function($http)
       method: 'GET',
       url: '/data/posts.json'
     }).then(function(response) {
-      angular.copy(response.data, _posts);
-      return response.data;
+      return angular.copy(response.data, _posts);
     });
   };
 
@@ -20,8 +19,14 @@ angular.module('bulletinBoard').factory("postService", ["$http", function($http)
     }
   };
 
+  var updatePostComment = function(post_id, comment_id) {
+    _posts[post_id].comments.push(comment_id);
+    return comment_id;
+  };
+
   return {
-    getPosts: getPosts
+    getPosts: getPosts,
+    updatePostComment: updatePostComment
   };
 
 }]);
