@@ -1,9 +1,9 @@
 {
   "1": {
-    "id": ,
-    "author": ,
-    "text": ,
-    "date": ,
+    "id": 1,
+    "author": "Batman",
+    "text": "I am Batman",
+    "date": "2016-09-26",
     "voteCount": 0
   }
 }

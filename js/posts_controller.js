@@ -1,10 +1,21 @@
-app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', function($scope, _, PostsSer){
+"use strict";
+
+app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function($scope, _, PostsSer, CommentsSer){
   $scope.commentParams = {};
 
   PostsSer.all()
    .then(function(posts){
      $scope.posts = posts;
    });
+
+   CommentsSer.all()
+   .then(function(comments){
+    $scope.comments = comments;
+   });
+
+   $scope.createComment = function(){
+      CommentsSer.create($scope.commentParams);
+   };
 }]);
 
 
@@ -21,6 +32,10 @@ app.factory('PostsSer', ['$http', '_', function($http, _){
       .then(function(response){
         return _posts = response.data;
       });
+  };
+
+  PostsSer.addComment = function(id){
+    _posts["1"].comments.push(id);
   };
 
   return PostsSer;
