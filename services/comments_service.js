@@ -36,25 +36,30 @@ app.factory('commentsService', ['$http', 'postsService', '_', function($http, po
   stub.createComment = function(params) {
     //create a new comment object
 
-    var comment = angular.copy(params, {});
+    var comment = {}
+    comment.author = params.author;
+    comment.body = params.body;
+    var postId = params.postId;
+    comment.created_at = new Date().toISOString().slice(0, 10);
+    comment.votes = 0;
 
     // get the next ID
     var nextId = stub.nextId();
     //set comments to next id
     comment.id = nextId;
-
     //append the comment onto the comments object as the next key
     _comments[nextId] = comment;
 
     _id += 1;
 
     // this is where we append id to post 
-    postsService.addCommentTo(params.postId, comment.id);
+    postsService.addCommentTo(postId, comment.id);
 
     //returns a promise so it can be chained with then. and the COMMENT
     // can be accessed in the callback
     return new Promise(function(resolve) {resolve(comment)} );
   }
+
 
   return stub
 

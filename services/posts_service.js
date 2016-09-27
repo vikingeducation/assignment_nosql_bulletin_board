@@ -7,13 +7,13 @@ app.factory('postsService', ['$http', function($http) {
   stub.all = function() {
     return $http.get("data/posts.json")
       .then(function(response) {
-        _users = response.data;
-        return _users;
+        _posts = response.data;
+        return _posts;
       });
   };
 
   stub.addCommentTo = function(postId, commentId) {
-    _posts.postId.comment_ids.push(commentId);
+    _posts[postId].comment_ids.push(commentId);
   }
 
   return stub;
