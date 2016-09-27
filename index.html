@@ -12,9 +12,16 @@
       <h2>{{post.title}}</h2>
       <p>Posted on {{post.date}} by {{post.user}}</p>
       <p>{{post.body}}</p>
+      <div ng-repeat="comment_id in post.comments | commentsFilter:post.comments:comments">
+        <h3>{{comments[comment_id].score}} | {{comments[comment_id].user}}</h3>
+        <p>Commented on {{comments[comment_id].date}}</p>
+        <p>{{comments[comment_id].text}}</p>
+      </div>
     </div>
   </body>
   <script src="app.js"></script>
-  <script src="services/posts_service.js">
-  <script src="controllers/posts_controller.js">
+  <script src="services/posts_service.js"></script>
+  <script src="services/comments_service.js"></script>
+  <script src="filters/comments_filter.js"></script>
+  <script src="controllers/posts_controller.js"></script>
 </html>

@@ -1,10 +1,22 @@
-BulletinBoard.factory('PostsService', ['$http', '_', function(_, $http){
+BulletinBoard.factory('PostsService', ['_', '$http', 'CommentsService', function(_, $http, CommentsService){
   console.log('loaded posts service');
 
-  var PostService = {};
+  var PostsService = {};
   var _posts;
 
-  PostService.all = function() {
+  // var _extendPost = function(post, allcomments) {
+  //   var comments = [];
+  //   for(comment_id in post.comments) {
+  //     comments.push(allcomments[comment_id])
+  //   }
+  //   return comments;
+  // }
+
+  // var _extendPosts = function(posts) {
+    
+  // }
+
+  PostsService.all = function() {
     return $http({
       url: '/data/posts.json',
       method: 'GET'
@@ -12,5 +24,5 @@ BulletinBoard.factory('PostsService', ['$http', '_', function(_, $http){
       return _posts = response.data;
     });
   };
-  return PostService;
+  return PostsService;
 }]);

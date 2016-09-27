@@ -2,7 +2,7 @@
   "1":{
     "name": "firstpost",
     "title": "My Batmobile Lost a Wheel :(",
-    "comments": [1],
+    "comments": [1, 2, 3],
     "date": "01/01/2016",
     "body": "ipsum lorum dis is a post",
     "user": "batman"

@@ -2,9 +2,22 @@
   "1":{
     "post":[1],
     "text": "this is a comment",
-    "user": "robin",
+    "user": "Robin",
     "date": "01/01/2016",
-    "score": 0
-
+    "score": 3
+  },
+  "2":{
+    "post":[1],
+    "text": "Your post is purrfect",
+    "user": "Cat Woman",
+    "date": "12/01/2015",
+    "score": 4
+  },
+  "3":{
+    "post":[1],
+    "text": "I got away",
+    "user": "Joker",
+    "date": "12/01/2015",
+    "score": -1
   }
 }
