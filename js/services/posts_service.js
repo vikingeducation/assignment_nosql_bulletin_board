@@ -8,6 +8,22 @@ BulletinBoard.factory('PostsService',
 
     var _posts;
 
+    var _extendPosts = function( posts ){
+
+      // Extend all posts in the list
+      _.each(posts, function(user){
+        _extendPost(user);
+      });
+    };
+
+    var _extendPost = function( post ){
+      post.addComment = function( commentId ){
+
+        // Add the commentId to the post's commentsIds
+        post.commentsIds.push(commentId);
+      };
+    };
+
     // ----------------------------------------
     // Public
     // ----------------------------------------
@@ -22,8 +38,15 @@ BulletinBoard.factory('PostsService',
         method: 'GET'
       })
         .then(function(response) {
-          // Set _birthdays to the response data
-          return _posts = response.data;
+          // Set the _posts object
+          // to the response data
+          _posts = response.data;
+
+          // Extend the list of posts so that they can add a comment to themselves.
+          _extendPosts(_posts);
+
+          // return _posts
+          return _posts;
         });
     };
 
