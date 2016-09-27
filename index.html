@@ -1,26 +1,33 @@
-<html ng-app="BulletinBoard">
+e<html ng-app="BulletinBoard">
   <head>
     <title>NoSQL!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!--bs4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
 
     <!--Lo-Dash -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.js"></script>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <!-- App -->
-    <script src="app.js"></script>
-    <!-- Controllers -->
-    <script src="controllers/controller.js"></script>
-    <!-- Directives -->
-   
-    <!-- Services -->
+    
 
   </head>
 
-  <body ng-controller= "FirstCtrl">
+  <body ng-controller= "PostsCtrl">
+
+    <div class="col-xs-6" ng-repeat="post in posts">
+
+    </div>
 
 
   </body>
 
-
+  <!-- App -->
+    <script src="app.js"></script>
+    <!-- Controllers -->
+    <script src="controllers/controller.js"></script>
+    <!-- Directives -->
+   <script src="services/posts_service.js"></script>
+    <!-- Services -->
 </html>
