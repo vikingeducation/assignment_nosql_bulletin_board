@@ -33,14 +33,19 @@ app.factory('commentsService', ['$http', 'postsService', '_', function($http, po
 
   // one - create the comment
   // two - append id to post
-  stub.createComment = function(params, commentable) {
+  stub.createComment = function(params) {
     //create a new comment object
 
     var comment = {}
     comment.author = params.author;
     comment.body = params.body;
+    comment.commentableId = params.commentableId;
+    comment.commentableType = params.commentableType;
+    comment.comment_ids = [];
 
-    var postId = params.postId;
+    var commentableId = params.commentableId;
+    var commentableType = params.commentableType;
+
     comment.created_at = new Date().toISOString().slice(0, 10);
     comment.votes = 0;
 
@@ -51,10 +56,17 @@ app.factory('commentsService', ['$http', 'postsService', '_', function($http, po
     //append the comment onto the comments object as the next key
     _comments[nextId] = comment;
 
-    _id += 1;
-
+    
     // this is where we append id to post 
-    postsService.addCommentTo(postId, comment.id);
+    if(commentableType === "post") {
+      console.log(commentableId);
+      postsService.addCommentTo(commentableId, comment.id);
+    }
+    else {
+      _comments[nextId].comment_ids.push(commentableId)
+    }
+    
+    _id += 1;
 
     //returns a promise so it can be chained with then. and the COMMENT
     // can be accessed in the callback

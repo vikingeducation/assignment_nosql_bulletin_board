@@ -4,11 +4,11 @@ app.directive('commentsDirective', [ "commentsService", function(commentsService
     templateUrl: "templates/comments.html",
     restrict: "A",
     
-
-    scope: {
-      comment: '=',
-      commentComment: "="
-    },
+    scope: true,
+    // scope: {
+    //   comment: '=',
+    //   commentComment: "="
+    // },
 
     link: function(scope) {
       scope.upVote = function() {
@@ -20,11 +20,9 @@ app.directive('commentsDirective', [ "commentsService", function(commentsService
       };
 
       scope.createComment = function() {
-        commentService.createComment(scope.commentComment, "comment")
-        console.log(scope.commentComment);
+        commentsService.createComment(scope.commentComment)
+        //console.log(scope.commentComment);
       }
-
-
     }
 
   }

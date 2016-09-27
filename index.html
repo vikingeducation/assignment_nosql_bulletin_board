@@ -44,16 +44,17 @@
           <form ng-submit="createComment()">
             <input type="text" ng-model="postComment.author" class="form-control">
             <input type="text" ng-model="postComment.body" class="form-control">
-            <input type="hidden" ng-model="postComment.postId" ng-init="postComment.postId = postId">
+            <input type="hidden" ng-model="postComment.commentableId" ng-init="postComment.commentableId = postId">
+            <input type="hidden" ng-model="postComment.commentableType" ng-init="postComment.commentableType = 'post'">
             <input type="submit", class="btn btn-outline-warning btn-lg">
           </form>
         </div>
 
         <div class="row">
-          <div class="col-xs-8 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:post.comment_ids | orderBy: '-votes'" comment="comment"></div>
+          <div class="col-xs-8 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:post.comment_ids | orderBy: '-votes'" comment="comment" comment-comment="commentComment"></div>
         </div>
       </div>
-
+      <p>{{commentComment}}</p>
     </div>
     <div class="container">
       

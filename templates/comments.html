@@ -4,12 +4,13 @@
 <p>Author: {{comment.author}}</p>
 <p>Body: {{comment.body }}</p>
 <p>Comment: {{comment.created_at}}</p>
-
+<p>{{comment.comment_ids}}</p>
 <div class="card bg">
   <form ng-submit="createComment()">
     <input type="text" ng-model="commentComment.author" class="form-control">
     <input type="text" ng-model="commentComment.body" class="form-control">
-    <input type="hidden" ng-model="commentComment.postId" ng-init="commentComment.postId = comment.id">
+    <input type="hidden" ng-model="commentComment.commentableId" ng-init="commentComment.commentableId = comment.id">
+    <input type="hidden" ng-model="commentComment.commentableType" ng-init="commentComment.commentableType = 'comment'">
     <input type="submit", class="btn btn-outline-warning btn-lg">
   </form>
 </div>
