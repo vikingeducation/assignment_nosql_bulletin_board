@@ -1,24 +1,26 @@
-bb.controller('PostCtrl', ['$scope', '_', function($scope, _){
+bb.controller('PostCtrl', ['$scope', '_', 'CommentService', 'PostService', function($scope, _, CommentService, PostService){
+
+
+  $scope.userParams = {
+
+
+  }
+
+
+  CommentService.list()
+    .then(function(comments){
+      $scope.comments = comments;
+    });
+
+
+  PostService.list()
+    .then(function(posts){
+      $scope.posts = posts;
+    });
+
+    $scope.createComment = function() {
+      CommentService.create($scope.userParams, $scope.commentParams)
+    }
+
 
 }]);
-
-
-// Posts
-// id
-// title
-// user_id
-// date
-// body
-// comments_array [ids]
-
-// comments:
-//  id
-//  body
-//  user_id
-//  date
-//  upvotes [ids of users]
-//  downvotes [ids of users]
-
-// user
-//  id
-//  name
