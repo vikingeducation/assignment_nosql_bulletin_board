@@ -1,4 +1,4 @@
-BulletinBoard.controller("RecentCommentsCtrl", ["$scope", "commentsService", "orderByDate", function($scope, commentsService, orderByDate) {
+BulletinBoard.controller("RecentCommentsCtrl", ["$scope", "commentsService", function($scope, commentsService) {
   // add to $scope here
   commentsService.getAllComments().then(function (response) {
       $scope.allComments = response.data;
