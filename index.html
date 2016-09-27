@@ -50,7 +50,7 @@
     </div>-->
 
     <div ng-repeat="comment in comments | produceComments: currentPost.comments | orderBy: '-voteCount'" >
-      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
+      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)" create="createNestedComment(parent)" params="commentCommentParams"></comment-box>
       <div class="col-sm-11 col-sm-offset-1" ng-repeat="childComment in comments | produceComments: comment.childComments | orderBy: '-voteCount'">
           <comment-box comment="childComment" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
       </div>

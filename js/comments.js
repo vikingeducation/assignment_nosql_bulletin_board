@@ -16,7 +16,7 @@ app.factory('CommentsSer', ['$http', '_', 'PostsSer', function($http, _, PostsSe
 		});
 	};
 
-	CommentsSer.create = function(params){
+	CommentsSer.create = function(params, parent){
 		var comment = angular.copy(params, {});
 		var nextId = CommentsSer.nextId();
 		comment.id = nextId;
@@ -24,7 +24,13 @@ app.factory('CommentsSer', ['$http', '_', 'PostsSer', function($http, _, PostsSe
 		comment.voteCount = 0;
 		_comments[nextId] = comment;
 		_id += 1;
-		PostsSer.addComment(comment.id);
+		if(parent){
+			_comments[parent.id].childComments.push(comment.id);
+		}	
+		else{
+			PostsSer.addComment(comment.id);
+		}
+
 		return new Promise(function(resolve){
 			resolve(comment);
 		});

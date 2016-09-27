@@ -5,19 +5,19 @@
   <p>Commented on {{comment.date | date}}</p>
   <p>{{comment.text}}</p>
   <p data-type="new-comment">
-    <a class='text-muted' ng-click="flipCom(comment)">Add Comment</a>
+    <a class='text-muted'>Add Comment</a>
     <form>
       <div>
         <label>Author
-          <input type="text" ng-model="commentCommentParams.author"/>
+          <input type="text" ng-model="params.author"/>
         </label>
       </div>
       <div>
         <label>Comment
-          <textarea ng-model="commentCommentParams.text"></textarea>
+          <textarea ng-model="params.text"></textarea>
         </label>
       </div>
-      <input type='submit' ng-click="createNestedComment()"/>
+      <input type='submit' ng-click="create({parent: comment})"/>
     </form>
   </>
 

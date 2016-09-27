@@ -6,7 +6,9 @@ app.directive("commentBox", function(){
 		scope: {
 			comment: "=",
 			downvote: "&",
-			upvote: "&"
+			upvote: "&",
+			create: "&",
+			params: "="
 		}
 	};
 });
