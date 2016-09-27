@@ -1,3 +1,9 @@
 .vote{
   cursor: pointer;
 }
+
+.comment-form {
+  width: 600px;
+  padding: 5px;
+  border: 1px solid black;
+}

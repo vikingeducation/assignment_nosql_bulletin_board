@@ -30,7 +30,7 @@
           </form>
         </div>
 
-        <comment ng-repeat="comment in allcomments | commentsFilter:post | orderBy: '-score'" comment="comment"></comment>
+        <comment ng-repeat="comment in post.getComments(allcomments) | orderBy: '-score'" comment="comment"></comment>
       </div>
     </div>
   </body>
