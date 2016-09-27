@@ -64,11 +64,23 @@
               <div class="post-body">
                 <p>{{ posts["1"]["body"] }}</p>
               </div>
-              <div class="create-a-comment">
-                FORM FOR CREATE A COMMENT
+              <div id="create-a-comment" style="border: 1px solid black; padding: 15px;">
+                <form>
+                  <div class="form-group">
+                    <label>Author
+                      <input type="text" ng-model="commentParams.author">
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>Comment
+                      <input type="text" ng-model="commentParams.body">
+                    </label>
+                  </div>
+                  <input type="submit" class="btn btn-success" ng-click="createComment(1)">
+                </form>
               </div>
               <div class="comments">
-                <div class="comment" ng-repeat="comment in postsComments(1) | orderBy: 'likes' : true">
+                <div class="comment" ng-repeat="comment in postsComments(1) | orderBy: 'likes' : true" style="margin-bottom: 15px;">
                   {{ comment.likes }}
                   {{ comment.author }}
                   <h5>Commented on {{ formatDate(comment.date) }}</h5>

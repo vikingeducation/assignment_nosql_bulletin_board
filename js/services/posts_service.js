@@ -27,6 +27,10 @@ BulletinBoard.factory('PostsService',
         });
     };
 
+    PostsService.addCommentIdToPost = function(postId, commentId){
+      _posts[postId].commentsIds.push( commentId );
+    };
+
     return PostsService;
 
   }]);
