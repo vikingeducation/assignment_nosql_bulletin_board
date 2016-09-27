@@ -2,10 +2,9 @@ bb.directive('commentDiv', [function(){
 
   return {
     templateUrl: "/directives/commentTemplate.html",
-    restrict: "E",
+    restrict: "AE",
     scope: {
-      post: "=",
-      comments: "="
+      comment: "="
     }
 
 
