@@ -1,5 +1,7 @@
 app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", function($scope, postsService, commentsService) {
 
+  $scope.postComment = {};
+
   postsService.all()
     .then(function(posts) {
       $scope.posts = posts;
@@ -11,8 +13,7 @@ app.controller("PostsCtrl", ["$scope", 'postsService', "commentsService", functi
   });
 
   $scope.createComment = function() {
-    //commentsService.createComment($scope.postComment)
-    console.log($scope.postComment)
+    commentsService.createComment($scope.postComment);
   }
 
 }])

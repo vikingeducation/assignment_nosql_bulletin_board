@@ -12,5 +12,9 @@ app.factory('postsService', ['$http', function($http) {
       });
   };
 
+  stub.addCommentTo = function(postId, commentId) {
+    _posts.postId.comment_ids.push(commentId);
+  }
+
   return stub;
 }]);

@@ -3,6 +3,6 @@ app.filter('objToArrayFilter', ['_', function (_) {
 
   return function(collection) {
     filtered = _.values(collection);
-    return filtered
+    return filtered;
   };  
 }]);

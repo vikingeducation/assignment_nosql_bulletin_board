@@ -1,6 +1,8 @@
-app.factory('commentsService', ['$http', function($http) {
+app.factory('commentsService', ['$http', 'postsService', '_', function($http, postsService , _ ) {
 
   var stub = {};
+
+  var _id;
   var _comments = [];
 
   stub.all = function() {
@@ -11,9 +13,47 @@ app.factory('commentsService', ['$http', function($http) {
     })
   };
 
+  stub.nextId = function() {
+    if (!_id) {
+      // base case no users
+      if (_.isEmpty(_comments)) {
+        return _id = 1;
+      }
+      // if users, grab an array of the Ids
+      var ids = _.map(Object.keys(_comments), function(id) {
+        return parseInt(id);
+      });
+      // highest count
+      _id = _.max(ids);
+      return _id + 1;
+    } 
+    return _id + 1;
+  }
+
+
+  // one - create the comment
+  // two - append id to post
   stub.createComment = function(params) {
-    var _comment = params;
-    console.log(postComment.author);
+    //create a new comment object
+
+    var comment = angular.copy(params, {});
+
+    // get the next ID
+    var nextId = stub.nextId();
+    //set comments to next id
+    comment.id = nextId;
+
+    //append the comment onto the comments object as the next key
+    _comments[nextId] = comment;
+
+    _id += 1;
+
+    // this is where we append id to post 
+    postsService.addCommentTo(params.postId, comment.id);
+
+    //returns a promise so it can be chained with then. and the COMMENT
+    // can be accessed in the callback
+    return new Promise(function(resolve) {resolve(comment)} );
   }
 
   return stub
