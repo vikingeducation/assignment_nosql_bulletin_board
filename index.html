@@ -10,10 +10,11 @@
       <h3>Recent Comments</h3>
       <div ng-repeat="comment in comments">
         <h3>{{comment.score}} | {{comment.user}}</h3>
-        <p>Commented on {{comment.date}}</p>
+        <p>Commented on {{comment.date | date:"MM/dd/yyyy"}}</p>
         <p>{{comment.text}}</p>
       </div>
     </div>
+
     <div ng-controller="PostsCtrl" class="col-xs-8">
       <h1>NoSQL Bulletin Board</h1>
       <h3>Posts</h3>
@@ -21,9 +22,20 @@
         <h2>{{post.title}}</h2>
         <p>Posted on {{post.date}} by {{post.user}}</p>
         <p>{{post.body}}</p>
+
+        <div class="comment-form">
+          <form ng-submit="addComment(post.id)">
+            <label>Author</label>
+            <input type="text" ng-model="commentParams.user">
+            <label>Comment</label>
+            <input type="text" ng-model="commentParams.text">
+            <input type="submit">
+          </form>
+        </div>
+
         <div ng-repeat="comment in allcomments | commentsFilter:post | orderBy: '-score'">
           <h3>{{comment.score}} | {{comment.user}}</h3>
-          <p>Commented on {{comment.date}}</p>
+          <p>Commented on {{comment.date | date:"MM/dd/yyyy"}}</p>
           <p>{{comment.text}}</p>
         </div>
       </div>

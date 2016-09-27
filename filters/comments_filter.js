@@ -2,8 +2,6 @@ BulletinBoard.filter('commentsFilter', function() {
 
   return function(collection, post) {
 
-    console.log(collection);
-    console.log(post);
     // if (!activateCommentFilter) {
     //   return false;
     // }
@@ -11,11 +9,10 @@ BulletinBoard.filter('commentsFilter', function() {
     var filteredComments = [];
 
     angular.forEach(collection, function(comment) {
-      if(comment.post === post.id){
+      if(comment.post_id === post.id){
         filteredComments.push(comment);
       }
     });
-    console.log(filteredComments);
     return filteredComments;
   };
 

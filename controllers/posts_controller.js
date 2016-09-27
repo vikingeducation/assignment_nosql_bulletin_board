@@ -1,7 +1,8 @@
 //postsctrl
 
 BulletinBoard.controller('PostsCtrl', ['$scope', 'PostsService', 'CommentsService', function($scope, PostsService, CommentsService){
-  console.log('loaded controller');
+  
+  $scope.commentParams = {};
 
   PostsService.all().then(function(posts){
     $scope.posts = posts;
@@ -10,5 +11,9 @@ BulletinBoard.controller('PostsCtrl', ['$scope', 'PostsService', 'CommentsServic
   CommentsService.all().then(function(comments){
     $scope.allcomments = comments;
   });
+
+  $scope.addComment = function(post_id) {
+    CommentsService.add($scope.commentParams, post_id);
+  }
 
 }]);
