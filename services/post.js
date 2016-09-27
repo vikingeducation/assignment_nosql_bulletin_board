@@ -13,10 +13,10 @@ bb.factory("PostService", ['$http', 'CommentService', '_', function($http, Comme
     .then(function(response){
       console.log("reaching the then of posts")
       angular.copy(response.data, _posts);
-      _extendPosts(_posts)
+      _extendPosts(_posts);
       return _posts;
-    })
-  }
+    });
+  };
 
   // obj.addComment = function(postId, commentId){
   //   _posts[postId].comments.push(commentId);
@@ -25,11 +25,12 @@ bb.factory("PostService", ['$http', 'CommentService', '_', function($http, Comme
 
   var _extendPost = function(post) {
     post.addComment = function(commentObj) {
-      var newCommentId = CommentService.create(commentObj)
-      post.comments.push(newCommentId)
-      commentObj = {}
-    }
-  }
+      var newCommentId = CommentService.create(commentObj);
+      post.comments.push(newCommentId);
+      commentObj.body = "";
+      commentObj.author = "";
+    };
+  };
 
 
   var _extendPosts = function(posts) {

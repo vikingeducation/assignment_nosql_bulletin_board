@@ -1,6 +1,6 @@
 bb.factory("CommentService",  ['$http', '_', function($http,_){
 
-  obj = {};
+  var obj = {};
 
   var _id;
   var _comments = {};
@@ -34,7 +34,9 @@ bb.factory("CommentService",  ['$http', '_', function($http,_){
     return _id + 1;
   };
 
-  obj.create = function(commentObj) {
+  obj.create = function(commentParams) {
+    var commentObj = angular.copy(commentParams, {});
+    commentParams = {};
     commentObj.date = new Date().toISOString().slice(0, 10);
     commentObj.upvotes = [];
     commentObj.downvotes = [];
@@ -58,11 +60,14 @@ bb.factory("CommentService",  ['$http', '_', function($http,_){
     //   //remove from posts
     // };
     comment.addComment = function(commentObj) {
-      var newCommentId = obj.create(commentObj)
-      comment.comments.push(newCommentId)
-      commentObj = {}
-    }
+      var newCommentId = obj.create(commentObj);
+      comment.comments.push(newCommentId);
+      commentObj.body = "";
+      commentObj.author = "";
+    };
   };
+
+  obj.commentFormData = {};
 
   var _extendComments = function(comments) {
     _.each(comments, function(comment) {
