@@ -20,12 +20,12 @@
   </div>
   <div class="col-sm-7">
     <h3>Posts</h3>
-    <h2>{{posts["1"].title}}</h2>
+    <h2>{{currentPost.title}}</h2>
     <p>
-      Posts on {{posts["1"].date | date }} by {{posts["1"].author}}
+      Posts on {{currentPost.date | date }} by {{currentPost.author}}
     </p>
     <p>
-      {{posts["1"].text}}
+      {{currentPost.text}}
     </p>
 
     <form>
@@ -42,11 +42,16 @@
       <input type='submit' ng-click="createComment()"/>
     </form>
 
-    <div ng-repeat="comment in comments | objToArray | orderBy: '-voteCount'">
-      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
-      <div class="col-sm-11 col-sm-offset-1" ng-repeat="i in comment.childComments" ng-if='comment.childComments.length'>
+    <!--<div ng-repeat="j in currentPost.comments | produceComments">
+      <comment-box comment="comments[j]" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
+      <div class="col-sm-11 col-sm-offset-1" ng-repeat="i in comments[j].childComments" ng-if='comment[j].childComments.length'>
           <comment-box comment="comments[i]" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
       </div>
+    </div>-->
+
+    <div ng-repeat="comment in comments | objToArray | filter: id: currentPost.comments">
+      <comment-box comment="comment" upvote="upvote(comment)" downvote="downvote(comment)"></comment-box>
+      
     </div>
 
   </div>

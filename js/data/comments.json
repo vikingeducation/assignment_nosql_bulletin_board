@@ -5,7 +5,7 @@
     "text": "I am Batman",
     "date": "2016-09-26",
     "voteCount": 0,
-    "childComments": [2, 3]
+    "childComments": [2]
   },
   "2": {
     "id": 2,
@@ -21,6 +21,6 @@
     "text": "Not a sailorman",
     "date": "2016-09-26",
     "voteCount": 0,
-    "childComments": [1]
+    "childComments": []
   }
 }

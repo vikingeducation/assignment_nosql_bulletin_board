@@ -6,12 +6,21 @@ app.controller('PostsCtrl', ['$scope', '_', 'PostsSer', 'CommentsSer', function(
   PostsSer.all()
    .then(function(posts){
      $scope.posts = posts;
+      $scope.currentPost = $scope.posts["1"];
    });
+
 
    CommentsSer.all()
    .then(function(comments){
     $scope.comments = comments;
    });
+
+   $scope.postComments = function(){
+    for (var i = 0 ; i < $scope.posts["1"].comments.length; i++){
+      $scope.postComments.push($scope.comments[$scope.posts["1"].comments[i]]);
+    }
+  };
+
 
    $scope.createComment = function(){
       CommentsSer.create($scope.commentParams);
