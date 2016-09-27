@@ -45,8 +45,8 @@
                 Commented on <b>{{ formatDate(comment.date) }}</b><br>
                 {{ comment.body }}<br>
                 <b>{{ comment.likes }}</b>
-                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="increaseLikes(comment.id)"></span>
-                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="decreaseLikes(comment.id)"></span>
+                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="comment.increaseLikes()"></span>
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="comment.decreaseLikes()"></span>
               </div>
             </div>
           </div>
