@@ -1,0 +1,22 @@
+<i class="fa fa-arrow-circle-up bigger" ng-click="upVote(comment)"></i>
+<i class="fa fa-arrow-circle-down bigger" ng-click="downVote(comment)"></i>
+<p>Votes: {{comment.votes}}</p>
+<p>Author: {{comment.author}}</p>
+<p>Body: {{comment.body }}</p>
+<p>Comment: {{comment.created_at}}</p>
+
+<div class="card bg">
+  <form ng-submit="createComment()">
+    <input type="text" ng-model="commentComment.author" class="form-control">
+    <input type="text" ng-model="commentComment.body" class="form-control">
+    <input type="hidden" ng-model="commentComment.postId" ng-init="commentComment.postId = comment.id">
+    <input type="submit", class="btn btn-outline-warning btn-lg">
+  </form>
+</div>
+
+<!-- we want to iterate through the comments in comment.comments_id-->
+
+<!-- <div class="col-xs-6 card card-outline-primary" 
+    comments-directive 
+    ng-repeat="comment in comments | filterByIds:comment.comment_ids | orderBy: '-created_at'" 
+    comment="comment"></div> -->

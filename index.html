@@ -1,0 +1,75 @@
+<html ng-app="BulletinBoard">
+  <head>
+    <title>NoSQL!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--bs4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!--Lo-Dash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+      <!-- App -->
+    <script src="app.js"></script>
+    <!-- Controllers -->
+    <script src="controllers/controller.js"></script>
+    <!-- Directives -->
+    <script src="directives/comment_directive.js"></script>
+    <!-- Services -->
+    <script src="services/posts_service.js"></script>
+    <script src="services/comments_service.js"></script>
+    <!--Filters -->
+    <script src="filters/comment_obj_to_array.js"></script>
+    <script src="filters/filter_by_ids.js"></script>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+  </head>
+
+  <body ng-controller= "PostsCtrl">
+
+    <div class="container-fluid">
+      <div class="col-xs-6 card bg-inverse" 
+      ng-repeat="(postId, post) in posts">
+        <p>Key: {{postId}}</p>
+        <p>Same Key as above:{{post.id}}</p>
+        <p>Created At:{{post.created_at | date}}</p>
+        <p>Title:{{post.title}}</p>
+        <p>Body:{{post.body}}</p>
+        <p>Author:{{post.author}}</p>
+        <p>Comment IDs:{{post.comment_ids}}</p>
+
+        <div class="card bg">
+          <form ng-submit="createComment()">
+            <input type="text" ng-model="postComment.author" class="form-control">
+            <input type="text" ng-model="postComment.body" class="form-control">
+            <input type="hidden" ng-model="postComment.postId" ng-init="postComment.postId = postId">
+            <input type="submit", class="btn btn-outline-warning btn-lg">
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 card card-outline-primary" comments-directive ng-repeat="comment in comments | filterByIds:post.comment_ids | orderBy: '-votes'" comment="comment"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="container">
+      
+
+      <div class="row">
+        <h3> Recent Comments <i class="fa fa-arrow-up fa-6x" aria-hidden="true"></i></h3>
+        <div class="col-xs-12 card card-outline-success" ng-repeat="comment in comments | objToArrayFilter | orderBy: '-created_at' | limitTo: 3">
+          <i class="fa fa-arrow-circle-up bigger" ng-click="upVote(comment)"></i>
+          <i class="fa fa-arrow-circle-down bigger" ng-click="downVote(comment)"></i>
+          <p>Votes: {{comment.votes}}</p>
+          <p>Author: {{comment.author}}</p>
+          <p>Body: {{comment.body }}</p>
+          <p>Comment: {{comment.created_at}}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
