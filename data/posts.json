@@ -1,0 +1,11 @@
+{
+  "1":{
+    "name": "firstpost",
+    "id": 1,
+    "title": "My Batmobile Lost a Wheel :(",
+    "comments": [1, 2, 3],
+    "date": "01/01/2016",
+    "body": "ipsum lorum dis is a post",
+    "user": "batman"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="BulletinBoard">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="row">
+    <div ng-controller="RecentCommentsCtrl" class="col-xs-4">
+      <h3>Recent Comments</h3>
+      <comment noindent="true" ng-repeat="comment in comments | orderObjectBy:'date':true | limitTo: 10" comment="comment"></comment>
+    </div>
+
+    <div ng-controller="PostsCtrl" class="col-xs-8">
+      <h1>NoSQL Bulletin Board</h1>
+      <h3>Posts</h3>
+      <div ng-repeat="post in posts">
+        <h2>{{post.title}}</h2>
+        <p>Posted on {{post.date}} by {{post.user}}</p>
+        <p>{{post.body}}</p>
+
+        <div class="comment-form">
+          <form ng-submit="addComment(post.id, 'post')">
+            <label>Author</label>
+            <input type="text" ng-model="commentParams.user">
+            <label>Comment</label>
+            <input type="text" ng-model="commentParams.text">
+            <input type="submit">
+          </form>
+        </div>
+
+        <comment ng-repeat="comment in post.getComments(allcomments) | orderBy: '-score'" comment="comment" allcomments="allcomments" add-nested-comment="addNestedComment(parent, parent_type)" nested-comment-params="nestedCommentParams[comment.id]"></comment>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+  <script src="services/posts_service.js"></script>
+  <script src="services/comments_service.js"></script>
+  <script src="filters/comments_filter.js"></script>
+  <script src="controllers/posts_controller.js"></script>
+  <script src="controllers/recent_comments_controller.js"></script>
+  <script src="directives/comment_directive.js"></script>
+  <script src="filters/date_sort_filter.js"></script>
+</html>
