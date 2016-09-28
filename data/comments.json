@@ -1,0 +1,32 @@
+{
+  "1": {
+    "id": 1,
+    "author": "Spiderman",
+    "created_at": "2016-01-01",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "votes": 0,
+    "post_id": 1,
+    "commentable_type": "post",
+    "comments": []
+  },
+  "2": {
+    "id": 2,
+    "author": "Spiderman",
+    "created_at": "2016-01-02",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "votes": 1,
+    "post_id": 1,
+    "commentable_type": "post",
+    "comments": []
+  },
+  "3": {
+    "id": 3,
+    "author": "Spiderman",
+    "created_at": "2016-01-05",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "votes": 5,
+    "post_id": 1,
+    "commentable_type": "post",
+    "comments": []
+  }
+}

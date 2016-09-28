@@ -1,0 +1,10 @@
+{
+  "1": {
+    "id": 1,
+    "author": "Batman",
+    "title": "My Batman Lost a Wheel",
+    "created_at": "2016-01-01",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "comments": [1,2,3]
+  }
+}
