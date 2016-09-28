@@ -14,7 +14,9 @@
       <div class="row">
 
         <div ng-controller="RecentCommentsCtrl" class="col-md-4">
-          <comment ng-repeat="comment in comments | orderObjectBy:'created_at'" comment='comment' recent="{{ true }}"></comment>
+          <comment
+          ng-repeat="comment in comments | orderObjectBy:'created_at'"
+          comment='comment' recent="{{ true }}"></comment>
         </div>
 
         <div ng-controller="PostCtrl" class="col-md-8">
