@@ -1,25 +1,8 @@
- <h3 class='votes'>
-  <img src="https://image.freepik.com/free-icon/upload_318-140715.jpg" ng-click="comment.upvote()">
-  <img src="https://image.freepik.com/free-icon/download_318-140686.jpg" ng-click="comment.downvote()">
-  {{ comment.upvotes.length - comment.downvotes.length }}</h3>
-  <h4>{{comment.author}} on {{comment.date | date}}</h3>
-  <p>{{ comment.body }}</p>
-  <form name="newComment" ng-submit="comment.addComment(commentParams)">
-    <label for="author">Author: </label>
-    <input type="text" name="author" ng-model="commentParams.author"><br>
-    <label for="comment">Comment: </label>
-    <input type="text" name="comment" ng-model="commentParams.body"><br>
-    <input type="submit" value="Submit">
-  </form>
-
-  <div>Comments on comment: {{comment.comments}}<div>
-  <div>Comments on comment: {{commentID}}<div>
-
- <script type="text/ng-template" id="commentRender.html"> 
+<script type="text/ng-template" id="commentRender.html">
   <h3 class='votes'>
-  <img src="https://image.freepik.com/free-icon/upload_318-140715.jpg" ng-click="comment.upvote()">
-  <img src="https://image.freepik.com/free-icon/download_318-140686.jpg" ng-click="comment.downvote()">
-  {{ comment.upvotes.length - comment.downvotes.length }}</h3>
+    <img src="https://image.freepik.com/free-icon/upload_318-140715.jpg" ng-click="comment.upvote()">
+    <img src="https://image.freepik.com/free-icon/download_318-140686.jpg" ng-click="comment.downvote()">
+    {{ comment.upvotes.length - comment.downvotes.length }}</h3>
   <h3>{{comment.author}} on {{comment.date | date}}</h3>
   <p>{{ comment.body }}</p>
   <form name="newComment" ng-submit="comment.addComment(commentParams)">
@@ -29,10 +12,30 @@
     <input type="text" name="comment" ng-model="commentParams.body"><br>
     <input type="submit" value="Submit">
   </form>
-
-  <div>Comments on comment: {{comment.comments}}<div>
-  <div>Comments on comment: {{commentID}}<div>
-  <div ng-repeat="commentID in comment.comments" comment="comments[commentID]" comments="comments" ng-include="commentRender.html"></div>
+  <div>comment!: {{comment}}</div>
+  <!-- <div ng-repeat="commentID in comment.comments" comment="comments[commentID]" comments="comments" ng-include src="'commentRender.html'"></div> -->
 </script>
-<div ng-repeat="commentID in comment.comments" comment="comments[commentID]" comments="comments" ng-include="commentRender.html"></div>
 
+
+<div class="container">
+
+<h3 class='votes'>
+  <img src="https://image.freepik.com/free-icon/upload_318-140715.jpg" ng-click="comment.upvote()">
+  <img src="https://image.freepik.com/free-icon/download_318-140686.jpg" ng-click="comment.downvote()">
+  {{ comment.upvotes.length - comment.downvotes.length }}</h3>
+<h4>{{comment.author}} on {{comment.date | date}}</h3>
+  <p>{{ comment.body }}</p>
+  <form name="newComment" ng-submit="comment.addComment(commentParams)">
+    <label for="author">Author: </label>
+    <input type="text" name="author" ng-model="commentParams.author"><br>
+    <label for="comment">Comment: </label>
+    <input type="text" name="comment" ng-model="commentParams.body"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+<div ng-if="comment.comments.length > 0">
+
+<div comment="comments[commentID]" ng-repeat="commentID in comment.comments"  comments="comments" ng-include src="'commentRender.html'"></div>
+
+</div>
+</div>

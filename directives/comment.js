@@ -8,8 +8,8 @@ bb.directive('commentDiv', [function(){
       comments: "=",
       createComment: "&"
     },
-    link: function(){
-      console.log("hey I'm the comment directive!")
+    link: function(scope, ele, attrs){
+
     }
 
     // "/directives/commentTemplate.html",
