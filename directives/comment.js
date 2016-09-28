@@ -6,10 +6,10 @@ bb.directive('commentDiv', [function(){
     scope: {
       comment: "=",
       comments: "=",
+      commentId: "=",
       createComment: "&"
     },
     link: function(scope, ele, attrs){
-
     }
 
     // "/directives/commentTemplate.html",

@@ -5,6 +5,7 @@
     {{ comment.upvotes.length - comment.downvotes.length }}</h3>
   <h3>{{comment.author}} on {{comment.date | date}}</h3>
   <p>{{ comment.body }}</p>
+  <div ng-init='comment = comments[commentID]'></div>
   <form name="newComment" ng-submit="comment.addComment(commentParams)">
     <label for="author">Author: </label>
     <input type="text" name="author" ng-model="commentParams.author"><br>
@@ -12,7 +13,6 @@
     <input type="text" name="comment" ng-model="commentParams.body"><br>
     <input type="submit" value="Submit">
   </form>
-  <div>comment!: {{comment}}</div>
   <!-- <div ng-repeat="commentID in comment.comments" comment="comments[commentID]" comments="comments" ng-include src="'commentRender.html'"></div> -->
 </script>
 
@@ -35,7 +35,7 @@
 
 <div ng-if="comment.comments.length > 0">
 
-<div comment="comments[commentID]" ng-repeat="commentID in comment.comments"  comments="comments" ng-include src="'commentRender.html'"></div>
+<div comment="comments[commentID]" ng-repeat="commentID in comment.comments"  comments="comments" comment-id="commentID" ng-include src="'commentRender.html'"></div>
 
 </div>
 </div>
