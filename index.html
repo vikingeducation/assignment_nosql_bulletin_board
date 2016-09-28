@@ -9,7 +9,7 @@
   <body class="row">
     <div ng-controller="RecentCommentsCtrl" class="col-xs-4">
       <h3>Recent Comments</h3>
-      <comment ng-repeat="comment in comments | orderObjectBy:'date':true | limitTo: 10" comment="comment"></comment>
+      <comment noindent="true" ng-repeat="comment in comments | orderObjectBy:'date':true | limitTo: 10" comment="comment"></comment>
     </div>
 
     <div ng-controller="PostsCtrl" class="col-xs-8">

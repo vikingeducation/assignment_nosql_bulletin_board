@@ -9,6 +9,7 @@ BulletinBoard.directive('comment', function(){
       comment: '=',
       allcomments: '=',
       nestedCommentParams: '=',
+      noindent: '=',
       addNestedComment: '&'
     }
   };

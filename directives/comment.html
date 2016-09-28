@@ -1,4 +1,4 @@
-<div ng-class="">
+<div ng-class="{child: comment.parent_type === 'comment' && noindent !== true}">
   <h3>
     <span class="vote" ng-click="comment.upvote()">↑</span><span class="vote" ng-click="comment.downvote()">↓</span>   {{comment.score}} | {{comment.user}}
   </h3>
