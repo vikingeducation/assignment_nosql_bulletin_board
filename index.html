@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="BulletinBoard">
+
+<head>
+  <title>Bulletin Board</title>
+  <!-- underscore -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body class="container">
+
+  <h1>NoSQL Bulletin Board</h1>
+
+  <div class="row">
+    <div class="col-sm-4" ng-controller="RecentCommentsCtrl">
+      <h2>Recent Comments</h2>
+      <ul>
+        <li ng-repeat="comment in comments | orderComments:'date':true | limitTo: 3" comment-div comment='comment' comments="comments">
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm-8"  ng-controller="PostCtrl">
+      <h2>Posts</h2>
+      <post-div post="post" comment-params="commentParams" create-comment="createComment()" comments="comments"></post-div>
+
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="/services/comment.js"></script>
+<script type="text/javascript" src="/services/post.js"></script>
+<script type="text/javascript" src="/directives/post.js"></script>
+<script type="text/javascript" src="/directives/comment.js"></script>
+<script type="text/javascript" src="/controllers/post_ctrl.js"></script>
+<script type="text/javascript" src="/controllers/recent_comments_ctrl.js"></script>
+<script type="text/javascript" src="/filters/score_filter.js"></script>
+<script type="text/javascript" src="/filters/order_comments.js"></script>
+
+</html>
