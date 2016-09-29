@@ -1,0 +1,10 @@
+{
+  "1": {
+    "id": 1,
+    "author": "bran",
+    "title": "post title",
+    "content": "here is the post content",
+    "post_date": "2016-01-01",
+    "comments": [1]
+  }
+}
