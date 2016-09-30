@@ -1,6 +1,7 @@
 app.filter('scoreFilter', ["_", function(_){
 
   return function(commentIndices, comments){
+    
     var sorted = _.sortBy(commentIndices, function(index){
       var comment = comments[index];
 

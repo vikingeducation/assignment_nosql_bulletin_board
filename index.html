@@ -15,8 +15,26 @@
 
     <div class="row">
 
-      <div class="col-xs-5" id="recent">
+      <div class="col-xs-5" id="recent" ng-controller="RecentCommentsCtrl">
+        <h2>Recent Comments</h2>
+        <div id="recent-comment" ng-repeat="(id, comment) in comments | filterComments:'date' | limitTo:3 ">
+          <div class="row">
+            <div class="col-xs-1">
+              <a href="#">^</a><a href="#">v</a>
+            </div>
+            <div class="col-xs-1">
+              <h3>{{comment.score}}</h3>
+            </div>
+            <div class="col-xs-10">
+              <h3>{{comment.author}}</h3>
+            </div>
 
+          </div> <!-- end first row -->
+
+          <p>Commented on {{comment.date | date}}</p>
+
+          <p>{{comment.body}}</p>
+        </div> <!-- end recent comment -->
 
 
       </div> <!-- end recent comments col -->
@@ -74,6 +92,8 @@
     <script src="javascripts/services/post_service.js"></script>
     <script src="javascripts/services/comment_service.js"></script>
     <script src="javascripts/filters/score_filter.js"></script>
+    <script src="javascripts/filters/comment_filter.js"></script>
+    <script src="javascripts/controllers/recent_comments_controller.js"></script>
   </body>
 
 
