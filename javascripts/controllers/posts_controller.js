@@ -8,5 +8,15 @@ app.controller("PostsCtrl", ['$scope', 'postService', 'commentService', function
     $scope.comments = comments;
   })
 
+  $scope.commentParams = {};
+
+
+  $scope.createComment = function(commentParams){
+    var commentCopy = angular.copy(commentParams, {});
+    commentCopy.postId = $scope.post.id;
+    commentService.createComment(commentCopy);
+
+  }
+
 
 }])
