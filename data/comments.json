@@ -1,0 +1,45 @@
+{
+
+  "1": {
+    "id": 1,
+    "author": "Foofoo Author",
+    "body": "This is an incredibly insightful comment",
+    "date": "2016-05-05",
+    "score": 0
+  },
+
+  "2": {
+    "id": 1,
+    "author": "Bazfoo Author",
+    "body": "be bewildered at the comment earthlings",
+    "date": "2016-07-05",
+    "score": 3
+  },
+
+  "3": {
+    "id": 3,
+    "author": "Donkey Kong",
+    "body": "BANANAS BANANAS BANANAS",
+    "date": "2015-05-05",
+    "score": 89
+  },
+
+  "4": {
+    "id": 4,
+    "author": "Mr. Enigma",
+    "body": "I am executing a scheme hahaha",
+    "date": "2013-02-05",
+    "score": 0
+  },
+
+  "5": {
+    "id": 5,
+    "author": "Turvis",
+    "body": "I hold water",
+    "date": "2016-03-12",
+    "score": 5
+  }
+
+
+
+}
