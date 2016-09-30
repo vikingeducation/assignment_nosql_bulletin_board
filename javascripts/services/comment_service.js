@@ -13,9 +13,10 @@ app.factory("commentService", ['$http', '_', function($http, _, postService){
     }).then(function success(response){
       console.log("getting all comments successful");
 
+      
       angular.copy(response.data, _comments);
 
-
+      _extendComments(_comments);
       return _comments;
     });
   };
@@ -59,6 +60,25 @@ app.factory("commentService", ['$http', '_', function($http, _, postService){
 
     return _id;
     
+  };
+
+
+  var _extendComment = function(comment){
+    comment.upVote = function(){
+      comment.score += 1;
+    };
+
+    comment.downVote = function(){
+      comment.score -= 1;
+    };
+
+  };
+
+
+  var _extendComments = function(comments){
+    _.each(comments, function(comment){
+      _extendComment(comment);
+    });
   };
 
 
