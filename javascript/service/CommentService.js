@@ -3,6 +3,21 @@ BulletinBoard.factory('CommentService', ['$http', 'PostService', function ($http
 
 	var _comments;
 
+	var _extendComment = function (comment) {
+		comment.upvote = function () {
+			comment.score += 1;
+		};
+		comment.downvote = function () {
+			comment.score -= 1;
+		};
+	};
+
+	var _extendComments = function (comments) {
+		_.each(comments, function (comment) {
+			_extendComment(comment);
+		});
+	};
+
 	CommentService.all = function () {
 		return $http({
 			method: "get",
@@ -10,7 +25,8 @@ BulletinBoard.factory('CommentService', ['$http', 'PostService', function ($http
 		}).then(
 			function success(response) {
 				_comments = response.data;
-				return response.data;
+				_extendComments(_comments)
+				return _comments;
 			}
 		);
 	};
@@ -25,6 +41,7 @@ BulletinBoard.factory('CommentService', ['$http', 'PostService', function ($http
 
 		PostService.appendToPost(comment.id, post);
 		_comments[nextId] = comment;
+		_extendComment(comment);
 
 		return new Promise(function (resolve) {
 			resolve(comment);

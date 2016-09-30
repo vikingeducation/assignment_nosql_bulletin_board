@@ -19,7 +19,7 @@
         <div class="col-md-4" ng-controller="RecentCommentsCtrl">
           <h2>Recent Comments</h2>
           <div ng-repeat="(id, comment) in comments">
-            <h3>{{ comment.score }} | {{ comment.author }}</h3>
+            <h3><span class="glyphicon glyphicon-arrow-up" ng-click="comment.upvote()"></span> <span class="glyphicon glyphicon-arrow-down" ng-click="comment.downvote()"></span> {{ comment.score }} | {{ comment.author }}</h3>
             <p class="text-muted">Commented on {{ comment.comment_date | date }}</p>
             <p>"{{ comment.content }}"</p>
           </div>
@@ -60,7 +60,7 @@
 
             <!-- comments -->
             <div ng-repeat="commentId in post.commentIds | OrderByScore: comments : true">
-              <h3>{{ comments[commentId].score }} | {{ comments[commentId].author }}</h3>
+              <h3><span class="glyphicon glyphicon-arrow-up" ng-click="comments[commentId].upvote()"></span> <span class="glyphicon glyphicon-arrow-down" ng-click="comments[commentId].downvote()"></span> {{ comments[commentId].score }} | {{ comments[commentId].author }}</h3>
               <p class="text-muted">Commented on {{ comments[commentId].comment_date | date }}</p>
               <p>"{{ comments[commentId].content }}"</p>
             </div>
