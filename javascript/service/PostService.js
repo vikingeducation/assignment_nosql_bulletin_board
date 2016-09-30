@@ -13,6 +13,10 @@ BulletinBoard.factory('PostService', ['$http', function ($http) {
 		}).then(
 			function success(response) {
 				_posts = response.data;
+				// return _.map(_posts, function (post) {
+				// 	console.log(post);
+				// 	return post;
+				// });
 				return _posts;
 			}
 		);

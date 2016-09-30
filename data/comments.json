@@ -3,7 +3,28 @@
     "id": 1,
     "author": "bran",
     "content": "here is the comment content",
+    "score": 2,
+    "comment_date": "2016-01-01"
+  },
+  "2": {
+    "id": 2,
+    "author": "alex",
+    "content": "here is the comment content 2",
     "score": 0,
     "comment_date": "2016-01-01"
+  },
+  "3": {
+    "id": 3,
+    "author": "Elon",
+    "content": "here is the comment content 3",
+    "score": 0,
+    "comment_date": "2016-05-01"
+  },
+  "4": {
+    "id": 4,
+    "author": "Tommy",
+    "content": "here is the comment content 4",
+    "score": 1,
+    "comment_date": "2016-05-01"
   }
 }

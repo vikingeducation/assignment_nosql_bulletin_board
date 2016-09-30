@@ -3,8 +3,16 @@
     "id": 1,
     "author": "bran",
     "title": "post title",
-    "content": "here is the post content",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas nulla id ultrices vehicula. Proin vitae urna orci. Morbi pellentesque consequat turpis, pulvinar semper nisi cursus at. Etiam scelerisque, sem et bibendum dignissim, ipsum risus vulputate magna, eu maximus quam ipsum et nisl. Aliquam risus erat, dictum non fringilla quis, venenatis quis justo. Quisque placerat sollicitudin mi id tempus. Vivamus enim tellus, congue nec tempus quis, convallis at quam. Curabitur volutpat, odio sit amet ultricies fermentum, est sem aliquam risus, in pulvinar augue neque at nunc. Aliquam erat volutpat. Integer leo magna, imperdiet eget gravida ac, placerat in turpis. Cras magna odio, molestie id urna et, commodo efficitur mauris. Suspendisse id lorem feugiat, ultrices velit eget, pharetra erat. Curabitur venenatis nisi nisl, pulvinar malesuada elit venenatis id. In tellus nibh, luctus quis ante id, cursus viverra justo. Curabitur accumsan diam nisl, a hendrerit mauris placerat nec.",
     "post_date": "2016-01-01",
-    "comments": [1]
+    "commentIds": [1, 3, 4]
+  },
+  "2": {
+    "id": 2,
+    "author": "Alan",
+    "title": "post title 2",
+    "content": "Etiam ac lectus aliquam, porta dolor vel, ultrices risus. Nunc vestibulum, tortor nec auctor pretium, dolor diam interdum tortor, sit amet gravida eros dui sit amet enim. Pellentesque consequat at odio gravida porta. Vivamus imperdiet egestas dui, non molestie mauris dictum vel. Cras hendrerit scelerisque est id fermentum. Mauris ut congue magna. Donec nec fringilla leo, et fermentum lectus. Proin est erat, tincidunt non metus ut, auctor vestibulum nulla. Donec at enim sit amet massa pharetra viverra. Nunc commodo malesuada magna sit amet pharetra. Sed id tellus semper, mollis massa vitae, pulvinar leo.",
+    "post_date": "2016-01-01",
+    "commentIds": [2]
   }
 }
