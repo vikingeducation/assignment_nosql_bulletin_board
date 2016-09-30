@@ -11,12 +11,46 @@
   </head>
 
 
-  <body>
+  <body class="container">
+
+    <div class="row">
+
+      <div class="col-xs-5" id="recent">
+
+
+
+      </div> <!-- end recent comments col -->
+
+      <div class="col-xs-7" id="posts" ng-controller="PostsCtrl">
+        <h1>Posts</h1>
+
+        <div id="post">
+          <h1>{{post.title}}</h1>
+          <p>Posted on {{post.date | date}} by {{post.author}}</p><br>
+
+          <p>{{post.body}}</p>
+        </div>
+
+        <div id="comment-form">
+
+
+
+        </div> <!-- end comment form -->
+
+
+      </div> <!-- end posts col -->
 
 
 
 
+    </div>
 
+
+
+
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/controllers/posts_controller.js"></script>
+    <script src="javascripts/services/post_service.js"></script>
   </body>
 
 
