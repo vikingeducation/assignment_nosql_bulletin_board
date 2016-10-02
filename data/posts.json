@@ -1,0 +1,10 @@
+{
+	"1": {
+		"id": 1,
+		"title": "You're not a veterinarian!",
+		"body": "ehhhhhhh shutup!",
+		"date": "January 1st, 2016",
+		"author": "Bill Burr",
+		"commentsIds": [1,2,3]
+	}
+}

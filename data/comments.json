@@ -1,0 +1,25 @@
+{
+	"1": {
+		"id": 1,
+		"author": "Cat Woman",
+		"body": "meoowwww",
+		"likes": 34,
+		"date": "2014-09-26T20:58:37+10:00"
+	},
+
+	"2": {
+		"id": 2,
+		"author": "Bat Man",
+		"body": "chiep chiep chiep chiep chieeeepppp",
+		"likes": 100,
+		"date": "2009-04-26T20:58:37+10:00"
+	},
+
+	"3": {
+		"id": 3,
+		"author": "The Joker",
+		"body": "You're to the left of me!",
+		"likes": 66,
+		"date": "2016-02-26T20:58:37+10:00"
+	}
+}
