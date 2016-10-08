@@ -1,0 +1,26 @@
+{
+  "1": {
+    "id": 1,
+    "author": "Batman",
+    "text": "I am Batman",
+    "date": "2016-09-26",
+    "voteCount": 0,
+    "childComments": [2, 3]
+  },
+  "2": {
+    "id": 2,
+    "author": "Popeye",
+    "text": "I am teh sailorman",
+    "date": "2016-09-26",
+    "voteCount": 0,
+    "childComments": []
+  },
+  "3": {
+    "id": 3,
+    "author": "Not Popeye",
+    "text": "Not a sailorman",
+    "date": "2016-09-26",
+    "voteCount": 0,
+    "childComments": []
+  }
+}
