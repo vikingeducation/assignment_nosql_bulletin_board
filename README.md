@@ -1,7 +1,5 @@
-By: [David]() & [Johnny](https://github.com/jsteenb2)
-
-# assignment_nosql_bulletin_board
-Upvoting and downvoting comments NoSQL style
+# NoSQL Bulletin Board
+A redditesqe AngularJS web application. A learning exercise that leverages two way data binding to build the reddit like interface.
 
 ##Needs of the user
 1. Comments collection
@@ -12,3 +10,6 @@ Upvoting and downvoting comments NoSQL style
 
 ##NoSQL data model of the above
 1. check comments.json
+
+###Contributors
+[David](https://github.com/davidmjiang) & [Johnny](https://github.com/jsteenb2)
