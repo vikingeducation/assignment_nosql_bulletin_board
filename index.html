@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app='BulletinBoard'>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src='app.js'></script>
+  <title>nosql practice</title>
+</head>
+<body>
+  <div class="container">
+<h1>NoSQL Bulletin Board</h1>
+  <div class="row">
+    <div class="col-xs-5" ng-controller="RecentCtrl">
+      <h2>Recent Comments</h2>
+      {{comments}}
+      <div ng-repeat="(id, comment) in comments | rankFilter:'created_at':true ">
+        <h2>[^][v] {{comment.rank}} | {{comment.author}}</h2>
+        <p>Commented on {{comment.created_at | date}}</p>
+        <p>{{comment.body}}</p>
+      </div>
+
+    </div>
+    <div class="col-xs-7" ng-controller="PostsCtrl">
+      <h2>Posts: {{comments}}</h2>
+
+        <h2>{{posts["1"].title}}</h2>
+        <weak>Posted on {{posts["1"].created_at | date}}, by {{posts["1"].author}}</weak>
+        <p>{{posts["1"].body}}</p>
+      <hr>
+      <div id="comment-form">
+        <form name="comForm">
+          Author: <input type="text" name="author" ng-model="formData.author">
+          <br>
+          Comment: <textarea type="text" name="body" ng-model="formData.body"></textarea>
+          <br>
+          <input type="submit" ng-click="createComment()">
+
+        </form>
+      </div>
+      <hr>
+        <div ng-repeat="(id, comment) in comments | rankFilter:'rank':true ">
+          <h2>[^][v] {{comment.rank}} | {{comment.author}}</h2>
+          <p>Commented on {{comment.created_at | date}}</p>
+          <p>{{comment.body}}</p>
+        </div>
+    </div>
+  </div>
+</div>
+</body>
+
+
+</html>
