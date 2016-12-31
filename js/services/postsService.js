@@ -6,12 +6,12 @@ BulletinBoard.factory('PostService', ['$http', function($http){
              method: 'GET',
              url: '/data/posts.json'
            }).then(
-            function success(response) {
-              _posts = response.data;
-              return _posts;
-           });
+             function success(response) {
+               _posts = response.data;
+               return _posts;
+             }
+           );
   };
-
 
   return PostService;
 }]);
