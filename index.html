@@ -13,21 +13,27 @@
 </head>
 
 <body>
-  <div class="container" ng-controller="PostsCtrl">
+  <div class="container" >
     <h1>Bulletin Board</h1>
     <div class="row well">
-      <div class="col-md-4">
+      <div class="col-md-4" ng-controller="RecentCommentsCtrl">
+        <h3>Recent Comments</h3>
+        <div ng-repeat="comment in comments | orderByDate:'comment_date':true">
+            <h4><span class="glyphicon glyphicon-arrow-up text-success" ng-click="comment.upvote()"></span> <span class="glyphicon glyphicon-arrow-down text-danger" ng-click="comment.downvote()"></span> {{ comment.score }} | {{ comment.author }}</h4>
+            <p class="text-muted">Commented on {{ comment.comment_date | date }}</p>
+            <p>{{ comment.text }}</p>
+        </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8" ng-controller="PostsCtrl">
         <h3>Posts</h3>
         <div ng-repeat="post in posts">
           <h4>{{ post.title }}</h4>
-          <p class="text-muted"> Posted on {{ post.post_date | date }} </p><br>
+          <p class="text-muted"> Posted on {{ post.post_date | date }} </p>
           <p> {{ post.text }}</p>
 
           <!-- comments -->
           <div ng-repeat="commentId in post.commentIds | orderByScore:comments:true">
-            <h3><span class="glyphicon glyphicon-arrow-up text-success" ng-click="comments[commentId].upvote()"></span> <span class="glyphicon glyphicon-arrow-down text-danger" ng-click="comments[commentId].downvote()"></span> {{ comments[commentId].score }} | {{ comments[commentId].author }}</h3>
+            <h4><span class="glyphicon glyphicon-arrow-up text-success" ng-click="comments[commentId].upvote()"></span> <span class="glyphicon glyphicon-arrow-down text-danger" ng-click="comments[commentId].downvote()"></span> {{ comments[commentId].score }} | {{ comments[commentId].author }}</h4>
             <p class="text-muted">Commented on {{ comments[commentId].comment_date | date }}</p>
             <p>{{ comments[commentId].text }}</p>
           </div>
@@ -43,8 +49,10 @@
   <script src = "js/services/commentsService.js"></script>
   <!-- controllers -->
   <script src = "js/controllers/postsCtrl.js"></script>
+  <script src = "js/controllers/recentCommentsCtrl.js"></script>
   <!-- directives -->
   <!-- filters -->
   <script src = "js/filters/orderByScore.js"></script>
+  <script src = "js/filters/orderByDate.js"></script>
 
 </html>
