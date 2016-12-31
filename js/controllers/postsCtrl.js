@@ -1,5 +1,7 @@
 BulletinBoard.controller('PostsCtrl', ['$scope', 'PostService', 'CommentService',
   function($scope, PostService, CommentService){
+    $scope.commentParams = {};
+
     PostService.all().then(
       function (posts) {
         $scope.posts = posts;
@@ -11,5 +13,10 @@ BulletinBoard.controller('PostsCtrl', ['$scope', 'PostService', 'CommentService'
         $scope.comments = comments;
       }
     );
+
+    $scope.createComment = function(post) {
+      CommentService.create($scope.commentParams, post);
+      $scope.commentParams = {};
+    }
   }
 ]);
