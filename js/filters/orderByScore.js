@@ -1,5 +1,6 @@
 BulletinBoard.filter('orderByScore', function () {
   return function (commentIds, comments, rev) {
+    if (!comments) return;
     var result = _.sortBy(commentIds, [function(commentId){
       return comments[commentId].score;
     }]);
