@@ -1,6 +1,6 @@
 BulletinBoard.factory('CommentService', ['$http', 'PostService', function($http, PostService){
   // private
-  var _comments;
+  var _comments = {};
   var _id;
 
   var CommentService = {};
@@ -11,7 +11,7 @@ BulletinBoard.factory('CommentService', ['$http', 'PostService', function($http,
              url: '/data/comments.json'
            }).then(
              function success(response) {
-               _comments = response.data;
+               angular.copy(response.data, _comments);
                _extendComments(_comments);
                return _comments;
              }
@@ -19,7 +19,8 @@ BulletinBoard.factory('CommentService', ['$http', 'PostService', function($http,
   };
 
   CommentService.create = function(params, post) {
-    var comment = angular.copy(params, {});
+    comment = {};
+    angular.copy(params, comment);
     var nextId = CommentService.nextId();
 
     comment.id = nextId;
