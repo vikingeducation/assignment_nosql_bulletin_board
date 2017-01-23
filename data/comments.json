@@ -1,0 +1,23 @@
+{
+	"1": {
+		"_id": 1,
+		"body": "lorem ipsum blah blah blah",
+		"author": "Farruh",
+		"commentDate": "01-12-2017",
+		"upvote": 1
+	},
+	"2": {
+		"_id": 2,
+		"body": "lorem ipsum blah cool blah",
+		"author": "Jack",
+		"commentDate": "03-08-2016",
+		"upvote": 5
+	},
+	"3": {
+		"_id": 3,
+		"body": "lorem ipsum blah Jessica blah",
+		"author": "Jessica",
+		"commentDate": "01-12-2019",
+		"upvote": 4
+	}
+}

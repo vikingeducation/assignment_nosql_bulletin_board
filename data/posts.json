@@ -1,0 +1,9 @@
+{
+	"1": {
+		"_id": 1,
+		"title": "Awesome",
+		"body": "lorem ipsum blah blah blah",
+		"author": "Farruh",
+		"postDate": "01-12-2017"
+	}
+}
