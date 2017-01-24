@@ -4,6 +4,29 @@
 		"title": "Awesome",
 		"body": "lorem ipsum blah blah blah",
 		"author": "Farruh",
-		"postDate": "01-12-2017"
+		"postDate": "01-12-2017",
+		"comments": [
+			{
+				"_id": 1,
+				"body": "lorem ipsum blah blah blah",
+				"author": "Farruh",
+				"commentDate": "01-12-2017",
+				"vote": 1
+			},
+			{
+				"_id": 2,
+				"body": "lorem ipsum blah blah blah",
+				"author": "Jack",
+				"commentDate": "01-12-2017",
+				"vote": 2
+			},
+			{
+				"_id": 3,
+				"body": "lorem ipsum blah blah blah",
+				"author": "Me",
+				"commentDate": "01-12-2017",
+				"vote": 5
+			}
+		]
 	}
 }
