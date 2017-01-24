@@ -15,9 +15,8 @@ BulletinBoard.controller("PostsCtrl", ["$scope", "PostService", "CommentService"
       });
 
   $scope.create = function(post){
-    PostService.create(post, $scope.commentForm);
-    $scope.commentForm.author = "";
-    $scope.commentForm.body = "";
+    CommentService.create(post, $scope.commentForm);
+    $scope.commentForm = {};
   };
 
   $scope.upVote = function (comment) {

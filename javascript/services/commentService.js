@@ -11,8 +11,13 @@ BulletinBoard.factory("CommentService", ["$http", function($http) {
         });
   };
 
-  CommentService.create = function(data) {
-
+  CommentService.create = function (post, comment) {
+    post.comments.push({
+      author: comment.author,
+      body:  comment.body,
+      vote: 0,
+      commentDate: new Date
+    });
   };
 
   return CommentService;

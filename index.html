@@ -48,10 +48,10 @@
       <p></p>
       <div ng-repeat="comment in post.comments | orderBy : '-vote'">
         <h2><span>{{ comment.vote }}</span> | {{ comment.author }}</h2>
-        <p>Commented on {{ comment.commentDate | date }}</p>
+        <p>Commented on {{ comment.commentDate | date:'medium' }}</p>
         <h6>"{{ comment.body }}"</h6>
-        <h5 ng-click="upVote(comment)" class="btn btn-primary btn-sm">UP</h5>
-        <h5 ng-click="downVote(comment)" class="btn btn-danger btn-sm">Down</h5>
+        <h5 ng-click="upVote(comment)" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-up"></span> UP</h5>
+        <h5 ng-click="downVote(comment)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-chevron-down"></span> Down</h5>
         <hr />
       </div>
 
