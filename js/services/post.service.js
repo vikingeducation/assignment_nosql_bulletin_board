@@ -28,15 +28,10 @@ bulletin.factory('postService',[
       return _posts[id];
     };
 
-    var addCommentId = function addCommentId(pId, cId){
-      _posts[pId].comments.push(cId);
-    }
-
     return {
       all: getPosts,
       find: getPostById,
-      refresh: refreshPosts,
-      insertComment: addCommentId
+      refresh: refreshPosts
     };
   }
 ]);

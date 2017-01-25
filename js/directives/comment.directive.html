@@ -9,3 +9,11 @@
   <span class="text-muted">{{comment.created_at | date : "MM/dd/yy" }}</span>
   <p class="small">{{comment.body}}</p>
 </div>
+<div class="row" ng-if="commentable">
+  <div class="col-xs-12">
+    <comment-form parent="comment"></comment-form>
+  </div>
+  <div class="col-xs-11 pull-right">
+    <comments ng-if="comment.comments.length"  parent-id="{{ comment.id }}" comment-list="comment.comments"></comments>
+  </div>
+</div>

@@ -10,7 +10,8 @@ bulletin.directive('comment', ['commentService',
     return {
       templateUrl: 'js/directives/comment.directive.html',
       scope: {
-        comment: '='
+        comment: '=',
+        commentable: '@'
       },
       restrict: 'E',
       link: linkFunc

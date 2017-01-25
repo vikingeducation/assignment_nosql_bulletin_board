@@ -2,7 +2,7 @@ bulletin.factory('commentService',[
   '$http', '$q', '_', 'dateFormatService',
   function($http, $q, _, dateFormatService){
     var _comments = {};
-    var _postComments = [];
+    var _postComments = {};
     var _id = 0;
 
     var getComments = function getComments(refresh){
@@ -11,9 +11,7 @@ bulletin.factory('commentService',[
           var data = resp.data
           angular.copy({}, _comments)
           for(var index in data){
-            if(data[index].parent !== undefined){
-              _comments[index] = data[index]
-            }
+            _comments[index] = data[index]
           }
           dateFormatService.parse(_comments);
           _id = _.size(data);
@@ -29,25 +27,29 @@ bulletin.factory('commentService',[
       return getComments(true);
     };
 
-    var getCommentsByIds = function getCommentsByIds(list){
+    var getCommentsByIds = function getCommentsByIds(id, list){
+      if(!_postComments[id]) _postComments[id] = [];
+
       return getComments().then(function(){
-        _postComments.splice(0);
+        _postComments[id].splice(0);
         for(var i = 0; i < list.length; i++){
-          _postComments.push(_comments[list[i]]);
+          _postComments[id].push(_comments[list[i]]);
         }
-        return _postComments;
+        return _postComments[id];
       });
     };
 
-    var getCommentsByPost = function getCommentsByPost(postId){
+    var getCommentsByPost = function getCommentsByPost(id){
+      if(!_postComments[id]) _postComments[id] = [];
+
       return getComments().then(function(){
-        _postComments.splice(0);
+        _postComments[id].splice(0);
         for(var i in _comments){
-          if(_comments[i].parent === postId){
-            _postComments.push(_comments[i]);
+          if(_comments[i].parent === id){
+            _postComments[id].push(_comments[i]);
           }
         }
-        return _postComments;
+        return _postComments[id];
       });
     };
 
@@ -63,19 +65,22 @@ bulletin.factory('commentService',[
           created_at: new Date(),
           upvotes: 0,
           parent: comment.parentId,
-          id: nextId()
+          id: nextId(),
+          comments: []
         };
       }
     };
 
     var createComment = function createComment(commentData) {
-      var comment = newCommentObj(commentData);
+      var comment = newCommentObj(commentData),
+          parentId = commentData.parentId
       if(comment){
-        if(_postComments.length && (_postComments[0].parent === commentData.parentId)){
-          _postComments.push(comment);
-        }
+        // if(_postComments[parentId].length && (_postComments[parentId][0].parent === commentData.parentId)){
+        //   _postComments[parentId].push(comment);
+        // }
         _comments[nextId()] = comment;
         _id++;
+        getCommentsByPost(parentId);
         return comment.id;
       }
       return false;
@@ -85,12 +90,17 @@ bulletin.factory('commentService',[
       _comments[commentId].upvotes += direction ? 1 : -1;
     };
 
+    var addCommentId = function addCommentId(pId, cId){
+      _comments[pId].comments.push(cId);
+    }
+
     return {
       all: getComments,
       get: getCommentsByIds,
       refresh: refreshComments,
       create: createComment,
-      modifyUpvotes: modifyUpvotes
+      modifyUpvotes: modifyUpvotes,
+      insertComment: addCommentId
     };
   }
 ]);

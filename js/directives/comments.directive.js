@@ -2,7 +2,7 @@ bulletin.directive('comments', [
   'commentService',
   function(commentService){
     var linkFunc = function($scope){
-      commentService.get($scope.commentList).then(
+      commentService.get($scope.parentId, $scope.commentList).then(
         function(comments){
           $scope.comments = comments;
         });
@@ -11,6 +11,7 @@ bulletin.directive('comments', [
     return {
       restrict: 'E',
       scope:{
+        parentId: '@',
         commentList: '='
       },
       templateUrl: 'js/directives/comments.directive.html',

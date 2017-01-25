@@ -14,7 +14,8 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "created_at": "Tue Jan 24 2017 09:09:30 GMT-0700 (MST)",
     "upvotes":5,
-    "parent": 1
+    "parent": 1,
+    "comments": []
   },
   "3":{
     "id": 3,
@@ -22,7 +23,8 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "created_at": "Mon Jan 23 2017 09:09:30 GMT-0700 (MST)",
     "upvotes":5,
-    "parent": 1
+    "parent": 1,
+    "comments": []
   },
   "4":{
     "id": 4,
@@ -30,7 +32,8 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "created_at": "Sun Jan 22 2017 09:09:30 GMT-0700 (MST)",
     "upvotes":0,
-    "parent": 1
+    "parent": 1,
+    "comments": []
   },
   "5":{
     "id": 5,
@@ -38,7 +41,8 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "created_at": "Wed Jan 25 2017 09:09:30 GMT-0700 (MST)",
     "upvotes":100000,
-    "parent": 1
+    "parent": 1,
+    "comments": []
   },
   "6":{
     "id": 6,
@@ -46,6 +50,7 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "created_at": "Wed Jan 25 2017 09:09:30 GMT-0700 (MST)",
     "upvotes":1,
-    "parent": 1
+    "parent": 1,
+    "comments": []
   }
 }

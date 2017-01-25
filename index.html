@@ -32,9 +32,9 @@
 
           <h2>Comments</h2>
 
-          <comment-form parent="currentPost"></comment-form>
+          <comment-form parent="currentPost" permanent="{{ true }}"></comment-form>
 
-          <comments ng-if="currentPost && currentPost.comments.length" comment-list="currentPost.comments"></comments>
+          <comments ng-if="currentPost && currentPost.comments.length" parent-id="{{ currentPost.id }}" comment-list="currentPost.comments"></comments>
         </div>
       </div>
     </div>

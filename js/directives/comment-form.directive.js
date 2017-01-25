@@ -1,17 +1,21 @@
 bulletin.directive('commentForm',[
-  "commentService", "postService",
-  function(commentService, postService) {
+  "commentService",
+  function(commentService) {
     var linkFunc = function(s, e, a){
+      s.show = s.permanent;
       s.submitComment = function submitComment(valid, newComment, form){
         if(valid){
-          newComment.parent = s.parent.id;
+          newComment.parentId = s.parent.id;
           var cId = commentService.create(newComment);
           if(cId !== false){
-            postService.insertComment(s.parent.id, cId);
+            commentService.insertComment(s.parent.id, cId);
             clearForm(newComment, form);
           }
         }
       };
+      s.toggleCommentForm = function toggleCommentForm(){
+        s.show = !s.show;
+      }
 
     };
 
@@ -26,7 +30,8 @@ bulletin.directive('commentForm',[
     return {
       templateUrl: 'js/directives/comment-form.directive.html',
       scope: {
-        parent: "="
+        parent: "=",
+        permanent: '@'
       },
       restrict: 'E',
       link: linkFunc
