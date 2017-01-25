@@ -2,7 +2,7 @@ bulletin.factory('postService',[
   '$http', '$q', '_', 'dateFormatService',
     function($http, $q, _, dateFormatService){
     var _posts = {};
-    var getPosts = function getPosts(){
+    var getPosts = function getPosts(refresh){
       if(!_.size(_posts) || refresh){
         return $http.get('/data/posts.json').then(function(resp){
           angular.copy(resp.data, _posts);
