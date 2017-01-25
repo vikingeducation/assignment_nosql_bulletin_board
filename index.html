@@ -20,8 +20,17 @@
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
   </head>
-  <body ng-controller="PostsCtl">
-    <post post="currentPost"></post>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" ng-controller="RecentCommentsCtl">
+          <comment ng-repeat="comment in comments | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
+        </div>
+        <div class="col-sm-9" ng-controller="PostsCtl">
+          <post post="currentPost"></post>
+        </div>
+      </div>
+    </div>
 
     <!-- modules -->
     <script src="js/app.js" charset="utf-8"></script>
@@ -36,8 +45,10 @@
     <!-- directives -->
     <script src="js/directives/post.directive.js" charset="utf-8"></script>
     <script src="js/directives/comments.directive.js" charset="utf-8"></script>
+    <script src="js/directives/comment.directive.js" charset="utf-8"></script>
 
     <!-- controllers -->
     <script src="js/controllers/posts.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/recent-comments.controller.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,5 +1,1 @@
-<div ng-repeat="comment in comments | orderBy : '-upvotes'">
-  <h3>{{comment.upvotes}} | {{comment.author}}</h3>
-  <span>{{comment.created_at | date : "MM/dd/yy" }}</span>
-  <p>{{comment.body}}</p>
-</div>
+<comment ng-repeat="comment in comments | orderBy : '-upvotes'" comment="comment"></comment>

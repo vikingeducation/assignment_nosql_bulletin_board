@@ -2,7 +2,7 @@ bulletin.factory('commentService',[
   '$http', '_', 'dateFormatService',
   function($http, _, dateFormatService){
     var _comments = {};
-    var _getComments = function getComments(){
+    var getComments = function getComments(){
       return $http.get('/data/comments.json').then(function(resp){
         angular.copy(resp.data, _comments);
         dateFormatService.parse(_comments);
@@ -11,7 +11,7 @@ bulletin.factory('commentService',[
     };
 
     var getCommentsByPost = function(list){
-      return _getComments().then(function(){
+      return getComments().then(function(){
         var commentsArr = [];
         for(var i = 0; i < list.length; i++){
           commentsArr.push(_comments[list[i]]);
@@ -22,6 +22,7 @@ bulletin.factory('commentService',[
     };
 
     return {
+      all: getComments,
       get: getCommentsByPost
     };
   }
