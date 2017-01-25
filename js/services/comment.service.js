@@ -4,7 +4,7 @@ bulletin.factory('commentService',[
     var _comments = {};
     var _postComments = [];
     var getComments = function getComments(refresh){
-      if(!_comments.length || refresh){
+      if(!_.size(_comments) || refresh){
         return $http.get('/data/comments.json').then(function(resp){
           angular.copy(resp.data, _comments);
           dateFormatService.parse(_comments);
@@ -22,7 +22,7 @@ bulletin.factory('commentService',[
 
     var getCommentsByIds = function(list){
       return getComments().then(function(){
-        var _postComments.splice(0);
+        _postComments.splice(0);
         for(var i = 0; i < list.length; i++){
           _postComments.push(_comments[list[i]]);
         }
@@ -32,7 +32,7 @@ bulletin.factory('commentService',[
 
     var getCommentsByPost = function(postId){
       return getComments().then(function(){
-        var _postComments.splice(0);
+        _postComments.splice(0);
         for(i in _comments){
           if(_comments[i].post === postId){
             _postComments.push(_comments[i]);
