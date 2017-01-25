@@ -11,7 +11,7 @@ bulletin.directive('comments', [
     return {
       restrict: 'E',
       scope:{
-        commentList: '@'
+        commentList: '='
       },
       templateUrl: 'js/directives/comments.directive.html',
       link: linkFunc
