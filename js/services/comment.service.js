@@ -7,10 +7,16 @@ bulletin.factory('commentService',[
 
     var getComments = function getComments(refresh){
       if(_.isEmpty(_comments) || refresh){
-        return $http.get('/data/comments.json').then(function(resp){
-          angular.copy(resp.data, _comments);
+        return $http.get('/data/posts.json').then(function(resp){
+          var data = resp.data
+          angular.copy({}, _comments)
+          for(var index in data){
+            if(data[index].parent !== undefined){
+              _comments[index] = data[index]
+            }
+          }
           dateFormatService.parse(_comments);
-          _id = _.size(_comments);
+          _id = _.size(data);
           return _comments;
         });
       }
@@ -37,7 +43,7 @@ bulletin.factory('commentService',[
       return getComments().then(function(){
         _postComments.splice(0);
         for(var i in _comments){
-          if(_comments[i].post === postId){
+          if(_comments[i].parent === postId){
             _postComments.push(_comments[i]);
           }
         }
@@ -56,7 +62,7 @@ bulletin.factory('commentService',[
           author: comment.author,
           created_at: new Date(),
           upvotes: 0,
-          post: comment.postId,
+          parent: comment.parentId,
           id: nextId()
         };
       }
@@ -65,7 +71,7 @@ bulletin.factory('commentService',[
     var createComment = function createComment(commentData) {
       var comment = newCommentObj(commentData);
       if(comment){
-        if(_postComments.length && (_postComments[0].post === commentData.postId)){
+        if(_postComments.length && (_postComments[0].parent === commentData.parentId)){
           _postComments.push(comment);
         }
         _comments[nextId()] = comment;

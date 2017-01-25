@@ -4,10 +4,10 @@ bulletin.directive('commentForm',[
     var linkFunc = function(s, e, a){
       s.submitComment = function submitComment(valid, newComment, form){
         if(valid){
-          newComment.postId = s.post.id;
+          newComment.parent = s.parent.id;
           var cId = commentService.create(newComment);
           if(cId !== false){
-            postService.insertComment(s.post.id, cId);
+            postService.insertComment(s.parent.id, cId);
             clearForm(newComment, form);
           }
         }
@@ -26,7 +26,7 @@ bulletin.directive('commentForm',[
     return {
       templateUrl: 'js/directives/comment-form.directive.html',
       scope: {
-        post: "="
+        parent: "="
       },
       restrict: 'E',
       link: linkFunc

@@ -5,7 +5,12 @@ bulletin.factory('postService',[
     var getPosts = function getPosts(refresh){
       if(_.isEmpty(_posts) || refresh){
         return $http.get('/data/posts.json').then(function(resp){
-          angular.copy(resp.data, _posts);
+          var data = resp.data
+          for(var index in data){
+            if(data[index].parent === undefined){
+              _posts[index] = data[index]
+            }
+          }
           dateFormatService.parse(_posts);
           return _posts;
         });

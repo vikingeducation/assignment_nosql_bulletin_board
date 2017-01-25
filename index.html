@@ -32,7 +32,7 @@
 
           <h2>Comments</h2>
 
-          <comment-form post="currentPost"></comment-form>
+          <comment-form parent="currentPost"></comment-form>
 
           <comments ng-if="currentPost && currentPost.comments.length" comment-list="currentPost.comments"></comments>
         </div>
