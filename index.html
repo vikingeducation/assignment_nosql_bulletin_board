@@ -28,6 +28,9 @@
         </div>
         <div class="col-sm-9" ng-controller="PostsCtl">
           <post post="currentPost"></post>
+
+          <h2>Comments</h2>
+          <comments ng-if="currentPost && currentPost.comments.length" comment-list="currentPost.comments"></comments>
         </div>
       </div>
     </div>

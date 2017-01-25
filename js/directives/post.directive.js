@@ -8,6 +8,6 @@ bulletin.directive('post', [
         post: '='
       },
       templateUrl: 'js/directives/post.directive.html',
-    }
+    };
   }
-])
+]);
