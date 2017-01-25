@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-module="bulletin">
+<html lang="en" ng-app="bulletin">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +20,8 @@
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
   </head>
-  <body>
-    
+  <body ng-controller="PostsCtl">
+    <post post="currentPost"></post>
 
     <!-- modules -->
     <script src="js/app.js" charset="utf-8"></script>
@@ -29,10 +29,13 @@
     <!-- filters -->
 
     <!-- services -->
+    <script src="js/services/post.service.js" charset="utf-8"></script>
     <script src="js/services/comment.service.js" charset="utf-8"></script>
 
     <!-- directives -->
+    <script src="js/directives/post.directive.js" charset="utf-8"></script>
 
     <!-- controllers -->
+    <script src="js/controllers/posts.controller.js" charset="utf-8"></script>
   </body>
 </html>
