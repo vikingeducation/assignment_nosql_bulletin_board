@@ -1,1 +1,1 @@
-var bulletin = angular.module('bulletin', []);
+var bulletin = angular.module('bulletin', [_]);
