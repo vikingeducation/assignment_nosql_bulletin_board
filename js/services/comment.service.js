@@ -33,7 +33,7 @@ bulletin.factory('commentService',[
     var getCommentsByPost = function(postId){
       return getComments().then(function(){
         _postComments.splice(0);
-        for(i in _comments){
+        for(var i in _comments){
           if(_comments[i].post === postId){
             _postComments.push(_comments[i]);
           }

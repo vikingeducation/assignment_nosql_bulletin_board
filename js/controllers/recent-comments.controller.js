@@ -10,7 +10,7 @@ bulletin.controller('RecentCommentsCtl', [
 
     var toArray = function(obj) {
       var returnArray = [];
-      for (commentId in obj) {
+      for (var commentId in obj) {
         returnArray.push(obj[commentId]);
       }
       return returnArray;
