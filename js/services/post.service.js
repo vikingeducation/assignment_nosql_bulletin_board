@@ -15,11 +15,11 @@ bulletin.factory('postService',[
     }
 
     var getPostById = function getPostById(id){
-      console.log(_.indexOf(idList(), id))
+      return _posts[id]
     }
 
     return {
-      all: getPosts
+      all: getPosts,
       find: getPostById
     }
   }
