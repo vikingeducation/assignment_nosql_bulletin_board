@@ -18,7 +18,7 @@ bulletin.factory('commentService',[
 
     var refreshComments = function refreshComments(){
       return getComments(true);
-    }
+    };
 
     var getCommentsByIds = function(list){
       return getComments().then(function(){
