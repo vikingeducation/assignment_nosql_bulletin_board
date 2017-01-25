@@ -1,5 +1,11 @@
-bulletin.directive('comment', [
-  function() {
+bulletin.directive('comment', ['commentService',
+  function(commentService) {
+
+    var linkFunc = function linkFunc(s) {
+      s.modifyUpvotes = function(direction) {
+        commentService.modifyUpvotes(s.comment.id, direction);
+      };
+    };
 
     return {
       templateUrl: 'js/directives/comment.directive.html',
@@ -7,6 +13,7 @@ bulletin.directive('comment', [
         comment: '='
       },
       restrict: 'E',
+      link: linkFunc
     };
   }
 ]);

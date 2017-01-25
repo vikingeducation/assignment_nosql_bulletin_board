@@ -1,5 +1,12 @@
 <form ng-submit="submitComment(newCommentForm.$valid, newComment, newCommentForm)" name="newCommentForm">
-  <input type="text" ng-model="newComment.author">
-  <input type="text" ng-model="newComment.body">
+  <label>
+    Author
+    <input type="text" ng-model="newComment.author" name="author">
+  </label>
+  <br>
+  <label>
+    Comment
+    <textarea ng-model="newComment.body" name="body"></textarea>
+  </label>
   <button type="submit">New Comment!</button>
 </form>

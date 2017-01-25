@@ -6,6 +6,6 @@ bulletin.filter('objArray', [
         toArray.push(obj[i]);
       }
       return toArray;
-    }
+    };
   }
-])
+]);
