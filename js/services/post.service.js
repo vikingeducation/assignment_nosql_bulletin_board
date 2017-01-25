@@ -19,20 +19,19 @@ bulletin.factory('postService',[
       return getComments(true);
     };
 
-    // var idList = function idList(){
-    //   return _.map(Object.keys(_posts), function(id) {
-    //     return parseInt(id);
-    //   });
-    // };
-
     var getPostById = function getPostById(id){
       return _posts[id];
     };
 
+    var addCommentId = function addCommentId(pId, cId){
+      _posts[pId].comments.push(cId);
+    }
+
     return {
       all: getPosts,
       find: getPostById,
-      refresh: refreshPosts
+      refresh: refreshPosts,
+      insertComment: addCommentId
     };
   }
 ]);

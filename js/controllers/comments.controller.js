@@ -5,15 +5,7 @@ bulletin.controller('CommentsCtl', [
     $scope.comments = [];
 
     commentService.all().then(function(comments) {
-      angular.copy(toArray(comments), $scope.comments);
+      angular.copy(comments, $scope.comments);
     });
-
-    var toArray = function(obj) {
-      var returnArray = [];
-      for (var commentId in obj) {
-        returnArray.push(obj[commentId]);
-      }
-      return returnArray;
-    };
   }
 ]);

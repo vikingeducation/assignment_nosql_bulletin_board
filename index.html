@@ -24,14 +24,14 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3" ng-controller="CommentsCtl">
-          <comment ng-repeat="comment in comments | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
+          <comment ng-repeat="comment in comments | objArray | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
         </div>
         <div class="col-sm-9" ng-controller="PostsCtl">
           <post post="currentPost"></post>
 
           <h2>Comments</h2>
 
-          <comment-form> </comment-form>
+          <comment-form post="currentPost"></comment-form>
 
           <comments ng-if="currentPost && currentPost.comments.length" comment-list="currentPost.comments"></comments>
         </div>
@@ -42,6 +42,7 @@
     <script src="js/app.js" charset="utf-8"></script>
 
     <!-- filters -->
+    <script src="js/filters/obj-array.filter.js" charset="utf-8"></script>
 
     <!-- services -->
     <script src="js/services/post.service.js" charset="utf-8"></script>

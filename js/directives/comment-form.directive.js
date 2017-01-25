@@ -1,18 +1,14 @@
-bulletin.directive('commentForm',[ "commentService", 
-  function(commentService) {
+bulletin.directive('commentForm',[
+  "commentService", "postService",
+  function(commentService, postService) {
     var linkFunc = function(s, e, a){
-      s.submitComment = function(valid, newComment, form){
+      s.submitComment = function submitComment(valid, newComment, form){
         if(valid){
-          var comment = {
-            body: newComment.body,
-            author: newComment.author,
-            created_at: Date(),
-            upvotes: 0,
-            post: s.post.id
-            id: commentService.nextId()
+          newComment.postId = s.post.id
+          var cId = commentService.create(newComment);
+          if(cId !== false){
+            postService.insertComment(s.post.id, cId);
           }
-          
-
         }
       }
     }

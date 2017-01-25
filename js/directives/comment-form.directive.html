@@ -1,6 +1,5 @@
-<form ng-sumbit="submitComment()" name="newComment">
-<input type="text" ng-model="newComment.author">
-<input type="text" ng-model="newComment.body">
-<button type="submit">New Comment!</button>
-
+<form ng-submit="submitComment(newCommentForm.$valid, newComment, newCommentForm)" name="newCommentForm">
+  <input type="text" ng-model="newComment.author">
+  <input type="text" ng-model="newComment.body">
+  <button type="submit">New Comment!</button>
 </form>
