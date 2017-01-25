@@ -23,13 +23,16 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-sm-3" ng-controller="RecentCommentsCtl">
+        <div class="col-sm-3" ng-controller="CommentsCtl">
           <comment ng-repeat="comment in comments | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
         </div>
         <div class="col-sm-9" ng-controller="PostsCtl">
           <post post="currentPost"></post>
 
           <h2>Comments</h2>
+
+          <comment-form> </comment-form>
+
           <comments ng-if="currentPost && currentPost.comments.length" comment-list="currentPost.comments"></comments>
         </div>
       </div>
@@ -49,9 +52,10 @@
     <script src="js/directives/post.directive.js" charset="utf-8"></script>
     <script src="js/directives/comments.directive.js" charset="utf-8"></script>
     <script src="js/directives/comment.directive.js" charset="utf-8"></script>
+    <script src="js/directives/comment-form.directive.js" charset="utf-8"></script>
 
     <!-- controllers -->
     <script src="js/controllers/posts.controller.js" charset="utf-8"></script>
-    <script src="js/controllers/recent-comments.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/comments.controller.js" charset="utf-8"></script>
   </body>
 </html>

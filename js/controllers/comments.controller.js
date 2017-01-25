@@ -1,4 +1,4 @@
-bulletin.controller('RecentCommentsCtl', [
+bulletin.controller('CommentsCtl', [
   '$scope', 'commentService',
   function($scope, commentService) {
 

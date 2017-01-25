@@ -3,11 +3,14 @@ bulletin.factory('commentService',[
   function($http, $q, _, dateFormatService){
     var _comments = {};
     var _postComments = [];
+    var _id = 0;
+
     var getComments = function getComments(refresh){
-      if(!_.size(_comments) || refresh){
+      if(_.isEmpty(_comments) || refresh){
         return $http.get('/data/comments.json').then(function(resp){
           angular.copy(resp.data, _comments);
           dateFormatService.parse(_comments);
+          _id = _.size(_comments)
           return _comments;
         });
       }
@@ -41,6 +44,10 @@ bulletin.factory('commentService',[
         return _postComments;
       });
     };
+
+    var getId = function(){
+      return _id + 1
+    }
 
     return {
       all: getComments,

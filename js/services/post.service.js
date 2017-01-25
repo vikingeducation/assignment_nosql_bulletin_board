@@ -3,7 +3,7 @@ bulletin.factory('postService',[
     function($http, $q, _, dateFormatService){
     var _posts = {};
     var getPosts = function getPosts(refresh){
-      if(!_.size(_posts) || refresh){
+      if(_.isEmpty(_posts) || refresh){
         return $http.get('/data/posts.json').then(function(resp){
           angular.copy(resp.data, _posts);
           dateFormatService.parse(_posts);
@@ -19,11 +19,11 @@ bulletin.factory('postService',[
       return getComments(true);
     };
 
-    var idList = function idList(){
-      return _.map(Object.keys(_posts), function(id) {
-        return parseInt(id);
-      });
-    };
+    // var idList = function idList(){
+    //   return _.map(Object.keys(_posts), function(id) {
+    //     return parseInt(id);
+    //   });
+    // };
 
     var getPostById = function getPostById(id){
       return _posts[id];
