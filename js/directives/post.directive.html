@@ -3,3 +3,5 @@
   <span>{{ post.created_at | date: "MM/dd/yy" }} || By: {{post.author}} </span>
   <p>{{ post.body }}</p>
 </div>
+
+<comments comment-list="{{post.comments}}"></comments>
