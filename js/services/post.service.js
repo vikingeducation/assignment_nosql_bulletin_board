@@ -5,7 +5,7 @@ bulletin.factory('postService',[
     var getPosts = function getPosts(){
       return $http.get('/data/posts.json').then(function(resp){
         angular.copy(resp.data, _posts);
-        _posts.comments = JSON.parse(_posts.comments)
+        _posts.comments = angular.fromJson(_posts.comments)
         return _posts;
       })
     }
