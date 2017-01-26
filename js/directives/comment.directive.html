@@ -6,9 +6,10 @@
     |
     {{comment.author}}
   </h4>
-  <span class="text-muted">{{comment.created_at | date : "MM/dd/yy" }}</span>
+  <span class="text-muted">{{ comment.created_at | date : "MM/dd/yy" }}</span>
   <p class="small">{{comment.body}}</p>
 </div>
+
 <div class="row" ng-if="commentable">
   <div class="col-xs-12">
     <comment-form parent="comment"></comment-form>
