@@ -1,0 +1,16 @@
+<form ng-submit="submitComment(newCommentForm.$valid, newComment, newCommentForm)" name="newCommentForm">
+  <span ng-show="show">
+    <label>
+      Author
+      <input type="text" ng-model="newComment.author" name="author" class="form-control">
+    </label>
+    <br>
+    <label for="comment_area_{{ comment.id }}">
+      Comment
+    </label>
+    <textarea id="comment_area_{{ comment.id }}" ng-model="newComment.body" name="body" class="form-control"></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </span>
+  <button type="button" ng-click="toggleCommentForm()" ng-if="!permanent" class="btn btn-primary">{{ show ? 'Cancel' : 'Add Comment' }}</button>
+</form>

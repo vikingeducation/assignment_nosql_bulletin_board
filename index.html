@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bulletin">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bulletin Board</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" ng-controller="CommentsCtl">
+          <comment ng-repeat="comment in comments | objArray | hasParent | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
+        </div>
+        <div class="col-sm-9" ng-controller="PostsCtl">
+          <post post="currentPost"></post>
+
+          <h2>Comments</h2>
+
+          <comment-form parent="currentPost" permanent="{{ true }}"></comment-form>
+
+          <comments ng-if="currentPost && currentPost.comments.length" parent-id="{{ currentPost.id }}" comment-list="currentPost.comments"></comments>
+        </div>
+      </div>
+    </div>
+
+    <!-- modules -->
+    <script src="js/app.js" charset="utf-8"></script>
+
+    <!-- filters -->
+    <script src="js/filters/obj-array.filter.js" charset="utf-8"></script>
+    <script src="js/filters/has-parent.filter.js" charset="utf-8"></script>
+
+    <!-- services -->
+    <script src="js/services/post.service.js" charset="utf-8"></script>
+    <script src="js/services/comment.service.js" charset="utf-8"></script>
+    <script src="js/services/date-format.service.js" charset="utf-8"></script>
+
+    <!-- directives -->
+    <script src="js/directives/post.directive.js" charset="utf-8"></script>
+    <script src="js/directives/comments.directive.js" charset="utf-8"></script>
+    <script src="js/directives/comment.directive.js" charset="utf-8"></script>
+    <script src="js/directives/comment-form.directive.js" charset="utf-8"></script>
+
+    <!-- controllers -->
+    <script src="js/controllers/posts.controller.js" charset="utf-8"></script>
+    <script src="js/controllers/comments.controller.js" charset="utf-8"></script>
+  </body>
+</html>

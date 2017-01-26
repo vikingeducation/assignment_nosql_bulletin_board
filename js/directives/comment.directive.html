@@ -1,0 +1,20 @@
+<div>
+  <h4>
+    <span ng-click="modifyUpvotes(true)" class="text-success arrow">&#8679;</span>
+    <span ng-click="modifyUpvotes(false)" class="text-danger arrow">&#8681;</span>
+    {{comment.upvotes}}
+    |
+    {{comment.author}}
+  </h4>
+  <span class="text-muted">{{ comment.created_at | date : "MM/dd/yy" }}</span>
+  <p class="small">{{comment.body}}</p>
+</div>
+
+<div class="row" ng-if="commentable">
+  <div class="col-xs-12">
+    <comment-form parent="comment"></comment-form>
+  </div>
+  <div class="col-xs-11 pull-right">
+    <comments ng-if="comment.comments.length"  parent-id="{{ comment.id }}" comment-list="comment.comments"></comments>
+  </div>
+</div>
