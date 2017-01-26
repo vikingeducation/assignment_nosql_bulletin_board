@@ -25,7 +25,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3" ng-controller="CommentsCtl">
-          <comment ng-repeat="comment in comments | objArray | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
+          <comment ng-repeat="comment in comments | objArray | hasParent | orderBy : '-created_at' | limitTo : 5" comment="comment"></comment>
         </div>
         <div class="col-sm-9" ng-controller="PostsCtl">
           <post post="currentPost"></post>
@@ -44,6 +44,7 @@
 
     <!-- filters -->
     <script src="js/filters/obj-array.filter.js" charset="utf-8"></script>
+    <script src="js/filters/has-parent.filter.js" charset="utf-8"></script>
 
     <!-- services -->
     <script src="js/services/post.service.js" charset="utf-8"></script>
