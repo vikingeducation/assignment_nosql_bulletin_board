@@ -1,0 +1,1 @@
+var BulletinBoard = angular.module("noSQL", []);
