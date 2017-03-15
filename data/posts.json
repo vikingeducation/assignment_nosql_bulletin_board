@@ -1,0 +1,10 @@
+{
+  "1": {
+    "id": 1,
+    "user": "tt",
+    "post": "i am a post",
+    "score": 0,
+    "created_at": "2016-01-01",
+    "comments": [1]
+  }
+}

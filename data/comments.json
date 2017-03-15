@@ -1,0 +1,9 @@
+{
+  "1": {
+    "id": 1,
+    "user": "tt",
+    "comment": "i am a comment",
+    "score": 0,
+    "created_at": "2016-01-01"
+  }
+}
