@@ -12,5 +12,9 @@ BulletinBoard.factory("postService", ['$http', function($http) {
     })
   }
 
+  postService.addComment = function(post, comment_id) {
+    _posts[post.id].comments.push(comment_id);
+  }
+
   return postService;
 }])
