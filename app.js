@@ -12,6 +12,14 @@ BulletinBoard.controller("PostsCtrl", ['$scope', "postService", "commentService"
 
 }])
 
+BulletinBoard.controller("RecentCommentsCtrl", ['$scope', "commentService", function($scope, commentService) {
+
+  commentService.getAll().then ( function(comments) {
+    $scope.recentComments = comments;
+  })
+
+}])
+
 BulletinBoard.factory('_', ['$window', function($window) {
   return $window._;
 }]);
@@ -63,5 +71,15 @@ BulletinBoard.filter('scoreFilter', ['_', function(_) {
 
     // console.log(comments) // why does this return undefined 
 
+  }
+}])
+
+BulletinBoard.filter('dateFilter', ['_', function(_) {
+  return function(collection) {
+    var sorted = _.sortBy(collection, function(comment) { return comment.created_at});
+
+    console.log(sorted)
+    
+    return sorted;
   }
 }])
