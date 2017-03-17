@@ -13,8 +13,6 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" type="text/css" href="main.css">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js"></script>
 </head>
 <body>
@@ -30,15 +28,12 @@
 
         <hr>
         <div ng-repeat="comment in comments | dateFilter: comments ">
-
-
-          <h3>
-            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-            {{comment.score}}
-            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-            {{comment.user}}
-          </h3>
-          <p>Commented on {{comment.created_at}}</p>
+            <h4>
+            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="comment.upvote()"></span>
+            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="comment.downvote()"></span>
+            {{comment.score}} | {{comment.user}}
+          </h4>
+          <p class="text-mute">Commented on {{comment.created_at}}</p>
           <p>{{comment.text}}</p>
         </div>
       </div>
@@ -47,30 +42,30 @@
         <h3>Posts</h3>
         <hr>
         <div ng-repeat="post in posts">
-          <h2>{{post.title}}</h2>
+          <h3>{{post.title}}</h3>
           <p>Posted on {{post.created_at}} by {{post.user}}</p>
           <p>{{post.text}}</p>
-
-          <div class="form-box">
-            <form>
-              <h4>Create a Comment</h4>
-              <label>Author</label>
-              <input type="text" name="author" class="form-control" ng-model="commentParams.user">
-              <label>Comment</label>
-              <textarea class="form-control" ng-model="commentParams.text"></textarea><br>
-
-              <input type="submit" name="submit" class="btn-primary form-control" ng-click="createComment(post)">
-            </form>            
-          </div>
+          <br><br>
 
 
+          <form>
+            <h4>Create a Comment</h4>
+            <label>Author</label>
+            <input type="text" name="author" class="form-control" ng-model="commentParams.user">
+            <label>Comment</label>
+            <textarea class="form-control" ng-model="commentParams.text"></textarea><br>
+
+            <input type="submit" name="submit" class="btn-primary form-control" ng-click="createComment(post)">
+          </form>            
+
+
+          <br><br>
           <div ng-repeat="id in post.comments | scoreFilter : comments">
-          <h3>
-            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="comments[id].upvote()"></span>
-            {{comments[id].score}}
-            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="comments[id].downvote()"></span>
-            {{comments[id].user}}
-          </h3>
+            <h4>
+              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="comments[id].upvote()"></span>
+              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="comments[id].downvote()"></span>
+              {{comments[id].score}} | {{comments[id].user}}
+            </h4>
             <p>Commented on {{comments[id].created_at}}</p>
             <p>{{comments[id].text}}</p>
           </div>

@@ -1,7 +1,7 @@
 BulletinBoard.factory("commentService", ['$http', 'postService',function($http, postService) {
   var commentService = {};
 
-  var _comments;
+  var _comments = {};
 
   var _extendComment = function(comment) {
     comment.upvote = function() {
@@ -34,7 +34,7 @@ BulletinBoard.factory("commentService", ['$http', 'postService',function($http, 
       method: 'get',
       url: "/data/comments.json"
     }).then( function(response) {
-      _comments = response.data;
+      angular.copy(response.data, _comments);
       _extendComments(_comments);
       return _comments;
     })
@@ -45,7 +45,7 @@ BulletinBoard.factory("commentService", ['$http', 'postService',function($http, 
     // add id
     comment.id = commentService.nextID();
     // add created at
-    comment.created_at = new Date();
+    comment.created_at = new Date().toISOString().slice(0, 10)
     // add score
     comment.score = 0;
 
