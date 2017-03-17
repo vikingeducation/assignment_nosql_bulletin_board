@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="BulletinBoard">
+<head>
+  <title>NoSQL</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js"></script>
+</head>
+<body>
+
+  <h1 class="text-center">NoSQL Bulletin Board</h1>
+
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-sm-4" ng-controller="RecentCommentsCtrl">
+        <h3>Recent Comments</h3>
+
+        <hr>
+        <div ng-repeat="comment in comments | dateFilter: comments ">
+            <h4>
+            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="comment.upvote()"></span>
+            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="comment.downvote()"></span>
+            {{comment.score}} | {{comment.user}}
+          </h4>
+          <p class="text-mute">Commented on {{comment.created_at}}</p>
+          <p>{{comment.text}}</p>
+        </div>
+      </div>
+
+      <div class="col-sm-8" ng-controller="PostsCtrl">
+        <h3>Posts</h3>
+        <hr>
+        <div ng-repeat="post in posts">
+          <h3>{{post.title}}</h3>
+          <p>Posted on {{post.created_at}} by {{post.user}}</p>
+          <p>{{post.text}}</p>
+          <br><br>
+
+
+          <form>
+            <h4>Create a Comment</h4>
+            <label>Author</label>
+            <input type="text" name="author" class="form-control" ng-model="commentParams.user">
+            <label>Comment</label>
+            <textarea class="form-control" ng-model="commentParams.text"></textarea><br>
+
+            <input type="submit" name="submit" class="btn-primary form-control" ng-click="createComment(post)">
+          </form>            
+
+
+          <br><br>
+          <div ng-repeat="id in post.comments | scoreFilter : comments">
+            <h4>
+              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="comments[id].upvote()"></span>
+              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-click="comments[id].downvote()"></span>
+              {{comments[id].score}} | {{comments[id].user}}
+            </h4>
+            <p>Commented on {{comments[id].created_at}}</p>
+            <p>{{comments[id].text}}</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="app.js"></script>
+  <!-- controllers -->
+  <script type="text/javascript" src="js/controllers/postsCtrl.js"></script>
+  <script type="text/javascript" src="js/controllers/recentCommentsCtrl.js"></script>
+  <!-- services -->
+  <script type="text/javascript" src="js/services/postService.js"></script>
+  <script type="text/javascript" src="js/services/commentService.js"></script>
+  <!-- filters -->
+  <script type="text/javascript" src="js/filters/scoreFilter.js"></script>
+  <script type="text/javascript" src="js/filters/dateFilter.js"></script>
+</body>
+</html>
