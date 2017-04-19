@@ -35,6 +35,16 @@
       <h3>{{post.title}}</h3>
       <p>Posted on: {{post.creation_date | date}} by {{post.author}}</p>
       <p>{{post.text}}</p>
+      <div>
+        <div>
+          <h3>Comments</h3>
+        </div>
+        <div ng-repeat="comment in comments">
+          <h4>{{comment.votes}} | {{comment.author}}</h4>
+          <p>Comment made: {{comment.creation_date | date}}</p>
+          <p>{{comment.text}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </body>
