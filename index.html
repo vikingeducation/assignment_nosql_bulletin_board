@@ -29,6 +29,13 @@
   <div class="row">
     <div class="col-xs-4">
       <h3>Recent Comments</h3>
+      <div ng-controller="RecentCommentsCtrl">
+        <div ng-repeat="comment in recentComments | orderBy: 'creation_date'">
+          <h4>{{comment.votes}} | {{comment.author}}</h4>
+          <p>Comment made: {{comment.creation_date | date}}</p>
+          <p>{{comment.text}}</p>
+        </div>
+      </div>
     </div>
     <div class="col-xs-8" ng-controller="PostsCtrl">
       <h3>Posts:</h3>
@@ -51,7 +58,7 @@
 
 <script src="/javascripts/app.js"></script>
 <script src="/javascripts/controllers/postsCtrl.js"></script>
-<script src="/javascripts/controllers/commentsCtrl.js"></script>
+<script src="/javascripts/controllers/recentCommentsCtrl.js"></script>
 <script src="/javascripts/services/postsService.js"></script>
 <script src="/javascripts/services/commentsService.js"></script>
 
