@@ -7,10 +7,10 @@
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- bootstrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <!-- Angular -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
   <!-- underscore -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <!-- <link rel="stylesheet" href="style.css"> -->
@@ -18,7 +18,20 @@
 
 <body>
 
+  <div ng-controller="PostsCtrl">
+    <h2>Posts:</h2>
+    <h3>{{post.title}}</h3>
+    <p>Posted on: {{post.creation_date | date}} by {{post.author}}</p>
+    <p>{{post.text}}</p>
+  </div>
 </body>
+
+<script src="/javascripts/app.js"></script>
+<script src="/javascripts/controllers/postsCtrl.js"></script>
+<script src="/javascripts/controllers/commentsCtrl.js"></script>
+<script src="/javascripts/services/postsService.js"></script>
+<script src="/javascripts/services/commentsService.js"></script>
+
 
 
 </html>
