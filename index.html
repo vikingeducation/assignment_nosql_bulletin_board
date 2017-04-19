@@ -32,7 +32,7 @@
       <div ng-controller="RecentCommentsCtrl">
         <div ng-repeat="comment in recentComments | orderBy: 'creation_date'">
           <h4>{{comment.votes}} | {{comment.author}}</h4>
-          <p>Comment made: {{comment.creation_date | date}}</p>
+          <p>Comment made: {{comment.creation_date | date : 'medium' }}</p>
           <p>{{comment.text}}</p>
         </div>
       </div>
@@ -40,15 +40,32 @@
     <div class="col-xs-8" ng-controller="PostsCtrl">
       <h3>Posts:</h3>
       <h3>{{post.title}}</h3>
-      <p>Posted on: {{post.creation_date | date}} by {{post.author}}</p>
+      <p>Posted on: {{post.creation_date | date : 'medium' }} by {{post.author}}</p>
       <p>{{post.text}}</p>
       <div>
+        <div>
+          <h3>Add a Comment</h3>
+          <form ng-submit="commentSubmit(newComment)">
+            <div class="form-group">
+              <label for="author">
+                Author
+                <input type="text" id="author" ng-model="newComment.author">
+              </label>
+              <br>
+              <label for="text">
+                Comment
+                <textarea id="text" ng-model="newComment.text"></textarea>
+              </label>
+              <input type="submit">
+            </div>
+          </form>
+        </div>
         <div>
           <h3>Comments</h3>
         </div>
         <div ng-repeat="comment in comments">
           <h4>{{comment.votes}} | {{comment.author}}</h4>
-          <p>Comment made: {{comment.creation_date | date}}</p>
+          <p>Comment made: {{comment.creation_date | date : 'medium' }}</p>
           <p>{{comment.text}}</p>
         </div>
       </div>

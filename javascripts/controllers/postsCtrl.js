@@ -10,4 +10,9 @@ BulletinBoard.controller('PostsCtrl', ['$scope', '_', 'postsService', 'commentsS
     $scope.comments = response;
   });
 
+  $scope.commentSubmit = function(newComment){
+    $scope.post.addComment(newComment);
+    $scope.newComment = {}; //clear form
+  };
+
 }]);
