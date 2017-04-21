@@ -1,4 +1,4 @@
-BulletinBoard.factory('commentsService', ['$http', function($http){
+BulletinBoard.factory('commentsService', ['$http', '_', function($http, _){
   var _comments;
   var _idCounter = 0;
 
@@ -8,6 +8,8 @@ BulletinBoard.factory('commentsService', ['$http', function($http){
         if (_comments) return _comments;
         _comments = response.data;
         _id = _comments.length;
+        _extendComments(_comments);
+
         return response.data;
       });
   };
@@ -24,6 +26,20 @@ BulletinBoard.factory('commentsService', ['$http', function($http){
     _idCounter += 1;
     _comments.push(newComment);
   };
+
+  var _extendComment = function(comment){
+    comment.vote = function(direction){
+      comment.votes += direction;
+    };
+  };
+
+  var _extendComments = function(comments){
+    _.each(comments, function(comment){
+      _extendComment(comment);
+    });
+  };
+
+
 
   return {
     getComments: getComments,
