@@ -1,0 +1,7 @@
+<div>
+  <img src="/img/up.png" ng-click="comment.vote(1)">
+  <img src="/img/down.png" ng-click="comment.vote(-1)">
+  <h4>{{comment.votes}} | {{comment.author}}</h4>
+  <p>Comment made: {{comment.creation_date | date : 'medium' }}</p>
+  <p>{{comment.text}}</p>
+</div>

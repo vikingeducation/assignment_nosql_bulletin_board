@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="BulletinBoard">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bulletin Board</title>
+  <!-- jquery -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+  <!-- bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <!-- underscore -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="text-center">NoSQL Bulletin Board</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <h3>Recent Comments</h3>
+      <div ng-controller="RecentCommentsCtrl">
+        <comment ng-repeat="comment in recentComments | orderBy : '-creation_date'"></comment>
+      </div>
+    </div>
+    <div class="col-xs-8" ng-controller="PostsCtrl">
+      <h3>Posts:</h3>
+      <h3>{{post.title}}</h3>
+      <p>Posted on: {{post.creation_date | date : 'medium' }} by {{post.author}}</p>
+      <p>{{post.text}}</p>
+      <div>
+        <div>
+          <h3>Add a Comment</h3>
+          <form ng-submit="commentSubmit(newComment)">
+            <div class="form-group">
+              <label for="author">
+                Author
+                <input type="text" id="author" ng-model="newComment.author">
+              </label>
+              <br>
+              <label for="text">
+                Comment
+                <textarea id="text" ng-model="newComment.text"></textarea>
+              </label>
+              <input type="submit">
+            </div>
+          </form>
+        </div>
+        <div>
+          <h3>Comments</h3>
+        </div>
+        <comment ng-repeat="comment in comments | orderBy : '-votes'"></comment>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="/javascripts/app.js"></script>
+<script src="/javascripts/controllers/postsCtrl.js"></script>
+<script src="/javascripts/controllers/recentCommentsCtrl.js"></script>
+<script src="/javascripts/services/postsService.js"></script>
+<script src="/javascripts/services/commentsService.js"></script>
+<script src="/javascripts/directives/comments.js"></script>
+
+
+</html>
