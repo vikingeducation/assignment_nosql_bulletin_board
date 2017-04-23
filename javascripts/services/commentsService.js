@@ -23,6 +23,7 @@ BulletinBoard.factory('commentsService', ['$http', '_', function($http, _){
       votes: 0,
       id: _idCounter,
     };
+    _extendComment(newComment);
     _idCounter += 1;
     _comments.push(newComment);
   };
