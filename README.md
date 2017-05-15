@@ -1,2 +1,1 @@
-# assignment_nosql_bulletin_board
-Upvoting and downvoting comments NoSQL style
+Created by: [Kenny Kottenstette](https://github.com/kotten1)
