@@ -3,8 +3,7 @@
     "id": 1,
     "author": "Batman",
     "title": "My Bat Mobile Lost a Wheel :(",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    "text": "lorem ipsum",
     "createdAt": "2016-01-01",
     "commentIds": [1, 2, 3]
   }

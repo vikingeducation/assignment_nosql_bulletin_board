@@ -1,24 +1,21 @@
 {
   "1": {
     "author": "Cat Woman",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    "text": "Lorem ipsum dolor sit amet, consectetur",
     "createdAt": "2016-01-01",
     "score": "4",
     "postId": "1"
   },
     "2": {
     "author": "Robin",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    "text": "Lorem ipsum dolor sit amet, consectetur",
     "createdAt": "2016-01-01",
     "score": "3",
     "postId": "1"
   },
     "3": {
     "author": "Joker",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    "text": "Lorem ipsum dolor sit amet, consectetur",
     "createdAt": "2016-01-01",
     "score": "-1",
     "postId": "1"
