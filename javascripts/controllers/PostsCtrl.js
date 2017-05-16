@@ -1,14 +1,14 @@
 app.controller('PostsCtrl', ['$scope', 'postService', function($scope, postService){
-    $scope.test = 'yes'
-    console.log(postService, '~~')
+  $scope.allPosts;
 
-    $scope. getPosts = function(){
-      postService.getPosts().then(function(response){
-        console.log(response, '!!')
-      }).then(function(response){
-        console.log(response, '!!')
+  $scope.getPosts = function(){
+    postService.getPosts().then(function successCallback(response) {
+      $scope.allPosts = response.data;
+      }, function errorCallback(response) {
+        console.log('getPosts() fail')
       });
-    }
-    $scope.getPosts()
+  }
+
+  $scope.getPosts()
 
 }]);
