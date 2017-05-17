@@ -20,6 +20,7 @@ app.controller('PostsCtrl', ['$scope', 'postService', 'commentService', function
   };
 
   $scope.updateScore = function(increment, comment){
+    console.log($scope.allComments)
     comment['score'] += increment;
   };
 
@@ -29,7 +30,7 @@ app.controller('PostsCtrl', ['$scope', 'postService', 'commentService', function
     $scope.allComments[ nextIndex ] = {
       "author": formData.author,
       "text": formData.text,
-      "createdAt": "2016-01-01",
+      "createdAt": new Date().toJSON(),
       "score": 0,
       "postId": postId
     }

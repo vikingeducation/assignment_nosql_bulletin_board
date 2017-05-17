@@ -1,12 +1,14 @@
 <div ng-repeat="post in allPosts" >
+<!-- post -->
   <h4>
     {{ post['title'] }}
   </h4>
   <h5>
-    Posted on {{ post['createdAt'] }} by {{ post['author'] }}
+    Posted on {{ post['createdAt'] | date }} by {{ post['author'] }}
   </h5>
 
   <hr>
+<!-- comment Form -->
 
   <form name="commentForm" ng-submit="createComment(formData, commentForm, post['id'])">
     <h3>Author</h3>
@@ -22,9 +24,8 @@
     <button type='submit' class="btn btn-primary">Submit</button>
   </form>
 
-
-
   <hr>
+<!-- comments -->
 
   <ul class="list-unstyled">
     <li ng-repeat="comment in allComments | orderJsonBy: 'score' " ng-if="comment['postId'] == post['id'] ">
@@ -41,31 +42,12 @@
       </h3>
 
       <h5>
-        Commented on {{ comment['createdAt'] }}
+        Commented on {{ comment['createdAt'] | date }}
       </h5>
       <p>
         {{ comment['text'] }}
       </p>
     </li>
   </ul>
-<!--
-    <li ng-repeat="commentId in post['commentIds'] | orderBy: 'score' ">
 
-    <hr><hr>
-      <h3>
-        <button class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
-        <button class="btn btn-danger glyphicon glyphicon-thumbs-down"></button>
-        {{ allComments[commentId]['score']}}
-        | {{ allComments[commentId]['author'] }}
-      </h3>
-
-      <h5>
-        Commented on {{ allComments[commentId]['createdAt'] }}
-      </h5>
-      <p>
-        {{ allComments[commentId]['text'] }}
-      </p>
-    </li>
-  </ul>
- -->
 <!-- main div end -->

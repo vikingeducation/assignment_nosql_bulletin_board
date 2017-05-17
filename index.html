@@ -17,20 +17,25 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-controller="PostsCtrl">
       <div class="col-xs-4">
         <h2>Recent Comments</h2>
-        <ul>
+        <ul class="list-unstyled">
           <li ng-repeat="comment in allComments">
+
             <h3>
-              <button class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
-              <button class="btn btn-danger glyphicon glyphicon-thumbs-down"></button>
-              {{ comment['score']}}
-              | {{ comment['author'] }}
+
+              <button class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="updateScore( 1, comment )">
+              </button>
+
+              <button class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-click="updateScore( -1, comment )">
+
+              </button>
+              {{ comment['score']}} | {{ comment['author'] }}
             </h3>
 
             <h5>
-              Commented on {{ comment['createdAt'] }}
+              Commented on {{ comment['createdAt'] | date }}
             </h5>
             <p>
               {{ comment['text'] }}
@@ -39,7 +44,7 @@
         </ul>
       </div>
 
-    <div class="col-xs-8" ng-controller="PostsCtrl">
+    <div class="col-xs-8" >
       <h2>Posts</h2>
       <!-- posts directive -->
       <posts all-posts="allPosts"></posts>
