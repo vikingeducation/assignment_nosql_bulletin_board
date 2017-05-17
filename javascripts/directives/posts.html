@@ -8,7 +8,7 @@
 
   <hr>
 
-    <li ng-repeat="comment in allComments " ng-if="comment['postId'] == post['id'] ">
+    <li ng-repeat="comment in allComments | orderJsonBy: 'score' " ng-if="comment['postId'] == post['id'] ">
 
     <hr><hr>
       <h3>
