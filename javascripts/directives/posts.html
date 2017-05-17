@@ -8,9 +8,27 @@
 
   <hr>
 
+  <form name="commentForm" ng-submit="createComment(formData, commentForm, post['id'])">
+    <h3>Author</h3>
+    <input type="text" ng-model="formData.author" required>
+
+    <br><br>
+
+    <h3>Comment</h3>
+    <textarea type="text" rows="5" ng-model="formData.text" required>
+
+    </textarea>
+    <br><br>
+    <button type='submit' class="btn btn-primary">Submit</button>
+  </form>
+
+
+
+  <hr>
+
+  <ul class="list-unstyled">
     <li ng-repeat="comment in allComments | orderJsonBy: 'score' " ng-if="comment['postId'] == post['id'] ">
 
-    <hr><hr>
       <h3>
 
         <button class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="updateScore( 1, comment )">
@@ -19,8 +37,7 @@
         <button class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-click="updateScore( -1, comment )">
 
         </button>
-        {{ comment['score']}}
-        | {{ comment['author'] }}
+        {{ comment['score']}} | {{ comment['author'] }}
       </h3>
 
       <h5>

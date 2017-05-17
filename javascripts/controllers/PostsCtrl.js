@@ -23,6 +23,18 @@ app.controller('PostsCtrl', ['$scope', 'postService', 'commentService', function
     comment['score'] += increment;
   };
 
+  $scope.createComment = function(formData, form, postId){
+    var nextIndex = Object.keys($scope.allComments).length + 1;
+
+    $scope.allComments[ nextIndex ] = {
+      "author": formData.author,
+      "text": formData.text,
+      "createdAt": "2016-01-01",
+      "score": 0,
+      "postId": postId
+    }
+
+  };
 
   //init
   $scope.getComments()
