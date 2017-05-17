@@ -14,14 +14,14 @@ app.controller('PostsCtrl', ['$scope', 'postService', 'commentService', function
   $scope.getComments = function(){
     commentService.getComments().then(function successCallback(response) {
         $scope.allComments = response.data;
+
       }, function errorCallback(response) {
         console.log('getComments() fail')
       });
   };
 
   $scope.updateScore = function(increment, comment){
-    console.log($scope.allComments)
-    comment['score'] += increment;
+    commentService.updateScore(increment, comment);
   };
 
   $scope.createComment = function(formData, form, postId){
@@ -33,12 +33,12 @@ app.controller('PostsCtrl', ['$scope', 'postService', 'commentService', function
       "createdAt": new Date().toJSON(),
       "score": 0,
       "postId": postId
-    }
+    };
 
   };
 
   //init
-  $scope.getComments()
-  $scope.getPosts()
+  $scope.getComments();
+  $scope.getPosts();
 
 }]);

@@ -21,7 +21,7 @@
       <div class="col-xs-4">
         <h2>Recent Comments</h2>
         <ul class="list-unstyled">
-          <li ng-repeat="comment in allComments">
+          <li ng-repeat="comment in allComments | orderJsonBy: 'createdAt' ">
 
             <h3>
 
@@ -47,7 +47,7 @@
     <div class="col-xs-8" >
       <h2>Posts</h2>
       <!-- posts directive -->
-      <posts all-posts="allPosts"></posts>
+      <posts></posts>
     </div>
 
     </div>

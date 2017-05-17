@@ -8,10 +8,20 @@ app.filter('orderJsonBy', function(){
       filteredCollection.push( collection[comment] );
     }
 
-    filteredCollection.sort(function(a, b){
-      return b[property] - a[property];
-    });
+    if ( property === 'score' ) {
+      filteredCollection.sort(function(a, b){
+        return b[property] - a[property];
+      });
 
-    return filteredCollection;
+      return filteredCollection;
+
+    } else if ( property === 'createdAt' ) {
+      filteredCollection.sort(function(a, b){
+        return Date.parse(b[property]) - Date.parse(a[property]);
+      });
+
+      return filteredCollection;
+
+    }
   };
 });

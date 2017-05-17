@@ -8,8 +8,8 @@ app.factory('commentService', ['$http', function($http){
     })
   };
 
-  service.updateScore = function(){
-
+  service.updateScore = function(increment, comment){
+    comment['score'] += increment;
   };
 
   return service;
