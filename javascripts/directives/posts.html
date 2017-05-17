@@ -1,8 +1,54 @@
-<div ng-repeat="post in allPosts">
-<h4>
-  {{ post['title'] }}
-</h4>
-<h5>
-  Posted on {{ post['createdAt'] }} by {{ post['author'] }}
-</h5>
-</div>
+<div ng-repeat="post in allPosts" >
+  <h4>
+    {{ post['title'] }}
+  </h4>
+  <h5>
+    Posted on {{ post['createdAt'] }} by {{ post['author'] }}
+  </h5>
+
+  <hr>
+
+    <li ng-repeat="comment in allComments " ng-if="comment['postId'] == post['id'] ">
+
+    <hr><hr>
+      <h3>
+
+        <button class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="updateScore( 1, comment )">
+        </button>
+
+        <button class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-click="updateScore( -1, comment )">
+
+        </button>
+        {{ comment['score']}}
+        | {{ comment['author'] }}
+      </h3>
+
+      <h5>
+        Commented on {{ comment['createdAt'] }}
+      </h5>
+      <p>
+        {{ comment['text'] }}
+      </p>
+    </li>
+  </ul>
+<!--
+    <li ng-repeat="commentId in post['commentIds'] | orderBy: 'score' ">
+
+    <hr><hr>
+      <h3>
+        <button class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
+        <button class="btn btn-danger glyphicon glyphicon-thumbs-down"></button>
+        {{ allComments[commentId]['score']}}
+        | {{ allComments[commentId]['author'] }}
+      </h3>
+
+      <h5>
+        Commented on {{ allComments[commentId]['createdAt'] }}
+      </h5>
+      <p>
+        {{ allComments[commentId]['text'] }}
+      </p>
+    </li>
+  </ul>
+ -->
+<!-- main div end -->

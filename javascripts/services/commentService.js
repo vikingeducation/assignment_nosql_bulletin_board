@@ -8,5 +8,9 @@ app.factory('commentService', ['$http', function($http){
     })
   };
 
+  service.updateScore = function(){
+
+  };
+
   return service;
 }]);
