@@ -1,0 +1,53 @@
+<div ng-repeat="post in allPosts" >
+<!-- post -->
+  <h4>
+    {{ post['title'] }}
+  </h4>
+  <h5>
+    Posted on {{ post['createdAt'] | date }} by {{ post['author'] }}
+  </h5>
+
+  <hr>
+<!-- comment Form -->
+
+  <form name="commentForm" ng-submit="createComment(formData, commentForm, post['id'])">
+    <h3>Author</h3>
+    <input type="text" ng-model="formData.author" required>
+
+    <br><br>
+
+    <h3>Comment</h3>
+    <textarea type="text" rows="5" ng-model="formData.text" required>
+
+    </textarea>
+    <br><br>
+    <button type='submit' class="btn btn-primary">Submit</button>
+  </form>
+
+  <hr>
+<!-- comments -->
+
+  <ul class="list-unstyled">
+    <li ng-repeat="comment in allComments | orderJsonBy: 'score' " ng-if="comment['postId'] == post['id'] ">
+
+      <h3>
+
+        <button class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="updateScore( 1, comment )">
+        </button>
+
+        <button class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-click="updateScore( -1, comment )">
+
+        </button>
+        {{ comment['score']}} | {{ comment['author'] }}
+      </h3>
+
+      <h5>
+        Commented on {{ comment['createdAt'] | date }}
+      </h5>
+      <p>
+        {{ comment['text'] }}
+      </p>
+    </li>
+  </ul>
+
+<!-- main div end -->
